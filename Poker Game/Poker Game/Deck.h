@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef DECK_H
+#define DECH_H
+
 class Deck
 {
 public:
@@ -6,3 +10,4 @@ public:
     ~Deck();
 };
 
+#endif // !DECK_H
