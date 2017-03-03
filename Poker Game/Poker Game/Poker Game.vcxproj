@@ -147,6 +147,7 @@
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PokerGame.cpp" />
+    <ClCompile Include="Results.cpp" />
     <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Results.h" />
     <ClInclude Include="Table.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
