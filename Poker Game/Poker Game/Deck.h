@@ -9,12 +9,11 @@ class Deck
 {
 private:
     int deckPosition;
-    CARD deck[52];
+    CARD cardStack[52];
 public:
     Deck();
     ~Deck();
-    CARD getCard();
-    void burnCard();
+    CARD dealCard();
 };
 
 #endif // !DECK_H

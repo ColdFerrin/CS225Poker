@@ -23,22 +23,22 @@ Deck::Deck()
             if (generated[suit][rank] == 0)
             {
                 generated[suit][rank] = 1;
-                deck[traverse].rank = rank + 2;
+                cardStack[traverse].rank = rank + 2;
                 if (suit == 0)
                 {
-                    deck[traverse].suit = 's';
+                    cardStack[traverse].suit = 's';
                 }
                 else if (suit == 1)
                 {
-                    deck[traverse].suit = 'h';
+                    cardStack[traverse].suit = 'h';
                 }
                 else if (suit == 2)
                 {
-                    deck[traverse].suit = 'c';
+                    cardStack[traverse].suit = 'c';
                 }
                 else if (suit == 3)
                 {
-                    deck[traverse].suit = 'd';
+                    cardStack[traverse].suit = 'd';
                 }
                 isCardValid = true;
             }
@@ -48,25 +48,19 @@ Deck::Deck()
     cout << "The deck has been shuffled" << endl;
 }
 
-
 Deck::~Deck()
 {
 
 }
 
-CARD Deck::getCard()
+CARD Deck::dealCard()
 {
     CARD temp;
 
-    temp.rank = deck[deckPosition].rank;
-    temp.suit = deck[deckPosition].suit;
+    temp.rank = cardStack[deckPosition].rank;
+    temp.suit = cardStack[deckPosition].suit;
     
     deckPosition++;
 
     return temp;
-}
-
-void Deck::burnCard()
-{
-    deckPosition++;
 }
