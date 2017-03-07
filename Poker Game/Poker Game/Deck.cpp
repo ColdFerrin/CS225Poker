@@ -33,19 +33,19 @@ Deck::Deck()
                 cardStack[traverse].rank = rank + 2;
                 if (suit == 0)
                 {
-                    cardStack[traverse].suit = 's';
+                    cardStack[traverse].suit = Spades;
                 }
                 else if (suit == 1)
                 {
-                    cardStack[traverse].suit = 'h';
+                    cardStack[traverse].suit = Hearts;
                 }
                 else if (suit == 2)
                 {
-                    cardStack[traverse].suit = 'c';
+                    cardStack[traverse].suit = Clubs;
                 }
                 else if (suit == 3)
                 {
-                    cardStack[traverse].suit = 'd';
+                    cardStack[traverse].suit = Diamonds;
                 }
                 isCardValid = true;
             }
