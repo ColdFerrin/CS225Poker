@@ -145,7 +145,6 @@
     <ClCompile Include="Dealer.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="HumanPlayer.cpp" />
-    <ClCompile Include="Output.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PokerGame.cpp" />
     <ClCompile Include="Results.cpp" />
@@ -156,7 +155,6 @@
     <ClInclude Include="Dealer.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="HumanPlayer.h" />
-    <ClInclude Include="Output.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Results.h" />
     <ClInclude Include="Table.h" />
