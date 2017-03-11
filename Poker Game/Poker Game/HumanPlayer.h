@@ -1,9 +1,16 @@
 #pragma once
+
+#ifndef HUMANPLAYER_H
+#define HUMANPLAYER_H
+
 #include "Player.h"
+
 class HumanPlayer : public Player
 {
+private:
 public:
-	HumanPlayer();
+	int makeDecision();
+	HumanPlayer(int);
 	~HumanPlayer();
 };
-
+#endif // !HUMANPLAYER_H

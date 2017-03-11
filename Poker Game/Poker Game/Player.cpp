@@ -31,12 +31,22 @@ int Player::cardsInHand()
 void Player::clearHand()
 {
 	cardsRecived = 0;
+	options[0] = true;
+	options[1] = false;
+	options[2] = false;
+	options[3] = false;
+	options[4] = true;
 }
 
-Player::Player()
+Player::Player(int tablePosition)
 {
 	cardsRecived = 0;
-}
+	options[0] = true;
+	options[1] = false;
+	options[2] = false;
+	options[3] = false;
+	options[4] = true;
+};
 
 Player::~Player()
 {
