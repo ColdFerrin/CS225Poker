@@ -4,14 +4,14 @@
 
 #include "Card.h"
 #include "Deck.h"
-class Results:public Deck
+class Results: public Deck
 {
   private:
     int theWinner;
+    int winningHand;
   public:
-//    Results();
-    int decider();
-//    ~Results();
+    Results();
+    void winningCheck();
 };
 
 #endif // RESULTS_H

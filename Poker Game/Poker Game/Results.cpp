@@ -2,16 +2,20 @@
 #include "Results.h"
 using namespace std;
 
-int Results::decider() 
+Results::Results() 
 {
   CARD cardStack[52];
   int winDecider = 0;
   cardStack[0].rank = 1;
-  cardStack[1].rank = 1; 
-  cardStack[2].rank = 1; 
+  cardStack[1].rank = 2; 
+  cardStack[2].rank = 3; 
   cardStack[3].rank = 1; 
   cardStack[4].rank = 2; 
-
+  cardStack[0].suit = Diamonds;
+  cardStack[1].suit = Diamonds;
+  cardStack[2].suit = Diamonds;
+  cardStack[3].suit = Diamonds;
+  cardStack[4].suit = Diamonds;
 
   int temp;
   for(int i = 0; i < 4; i++)                                   // Ranks in order from greatest to least
@@ -31,9 +35,19 @@ int Results::decider()
   {
     cout << cardStack[transport].rank << endl;                 
   }
-
+  int flushCheck, isFlush;
+  for(int flushMove = 0; flushMove < 5; flushMove++) {
+    flushCheck = 0;
+    for(int flushMoving = flushMove + 1; flushMoving < 5; flushMoving++) {
+      if (cardStack[flushMove].suit == cardStack[flushMoving].suit)
+        flushCheck++;
+      if(flushCheck == 5)
+         isFlush = 1;
+    }
+  }  
   int straightChance = 0;
   int movingStraight = 1;
+  int isStraight;
   for(int change = 0; change <5; change++)                      //Checks for Straights
   {
     if(cardStack[change].rank - cardStack[movingStraight].rank == 1)
@@ -42,7 +56,7 @@ int Results::decider()
   }
   cout <<"STRAIGHT" << straightChance << endl;
   if(straightChance == 4)
-    return 4;
+    isStraight = 1;
     
   for(int move = 0; move<5; move++)                           //Determines all pairs, two pairs, trips, Full House, and Quads
   {
@@ -52,60 +66,63 @@ int Results::decider()
         winDecider++;
     }
   }
-
-  cout << "HUla" << winDecider << endl;
-  if (winDecider == 6)
-    return 7;
-  if (winDecider == 4)
-    return 6;
+  if(isStraight == 1 && isFlush == 1 && cardStack[0].rank == 14)         //Determines what rank of what someone has 
+    winningHand = 9;
+  else if(isStraight == 1 && isFlush == 1)
+    winningHand = 8;  
+  else if (winDecider == 6)
+     winningHand = 7;
+  else if (winDecider == 4)
+    winningHand = 6;
+  else if(isFlush == 1)
+    winningHand = 5;
+  else if(isStraight == 1)
+    winningHand = 4;
   else if (winDecider == 3)
-    return 3;
+    winningHand = 3;
   else if (winDecider == 2)
-    return 2;
+    winningHand = 2;
   else if(winDecider == 1)
-    return 1;
+    winningHand = 1;
   else                                                   //To return high card if needed
     {
     int highCard = 0;
-    for(int highChange = 0; highChange <5; highChange++)
+    for(int highChange = 0; highChange <7; highChange++)
     {
       if(cardStack[highChange].rank > highCard)
       {     
         highCard = cardStack[highChange].rank;
       }
     }
-    return 0;
+    winningHand = 0;
     }
 }
-
-
-
-int main()
-{
-  int winnerDecided;
-  Results w;
-  winnerDecided = w.decider();
-  cout << "LOL" << winnerDecided << endl;
-  if(winnerDecided == 9)
+void Results::winningCheck(){
+  if(winningHand == 9)
     cout << "Royal Flush" << endl;
-  else if(winnerDecided == 8)
+  else if(winningHand == 8)
     cout << "Straight Flush" << endl;
-  else if(winnerDecided == 7)
+  else if(winningHand == 7)
     cout << "Four of a kind" << endl;
-  else if(winnerDecided == 6)
-    cout << "Full House" << endl;   
-  else if(winnerDecided == 5)
+  else if(winningHand == 6)
+    cout << "Full House" << endl;
+  else if(winningHand == 5)
     cout << "Flush" << endl;
-  else if(winnerDecided == 4)
+  else if(winningHand == 4)
     cout <<"Straight" << endl;
-  else if (winnerDecided == 3)
+  else if (winningHand == 3)
     cout <<"Three of a kind" << endl;
-  else if(winnerDecided == 2)
+  else if(winningHand == 2)
     cout <<" Two Pair" << endl;
-  else if(winnerDecided == 1)
+  else if(winningHand == 1)
     cout <<" Pair" << endl;
   else
     cout << "High Card " <<  endl;
-  
+
 }
+
+
+
+
+int main () {}
 
