@@ -35,7 +35,8 @@ void Player::clearHand()
 	options[1] = false;
 	options[2] = false;
 	options[3] = false;
-	options[4] = true;
+	options[4] = false;
+	options[5] = true;
 }
 
 Player::Player(int tablePosition)
@@ -45,7 +46,8 @@ Player::Player(int tablePosition)
 	options[1] = false;
 	options[2] = false;
 	options[3] = false;
-	options[4] = true;
+	options[4] = false;
+	options[5] = true;
 };
 
 Player::~Player()

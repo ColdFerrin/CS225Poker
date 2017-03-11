@@ -16,15 +16,19 @@ int HumanPlayer::makeDecision()
 	}
 	if (options[2])
 	{
-		cout << "2 Raise, ";
+		cout << "2 Call, ";
 	}
 	if (options[3])
 	{
-		cout << "3 All in, ";
+		cout << "3 Raise, ";
 	}
 	if (options[4])
 	{
-		cout << "or 4 Fold" << endl;
+		cout << "4 All in, ";
+	}
+	if (options[5])
+	{
+		cout << "or 5 Fold" << endl;
 	}
 	cout << "Please type the number for your desired action:";
 	int chosenAction = 0;
