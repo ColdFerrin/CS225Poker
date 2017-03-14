@@ -17,6 +17,7 @@ class Deck
 private:
     int deckPosition;
     CARD cardStack[52];
+	int myRandom(int);
 public:
     Deck();
     ~Deck();

@@ -8,6 +8,8 @@
 #include "Deck.h"
 
 #include <iostream>
+#include <algorithm>
+#include <vector>
 #include <ctime>
 #include <cstdlib>
 
@@ -15,43 +17,47 @@ using namespace std;
 
 Deck::Deck()
 {
-    bool generated[4][13] = { 0 };
-    for (int traverse = 0; traverse < 52; traverse++)
-    {
-        bool isCardValid = 0;
-        int suit;
-        int rank;
-        while (!isCardValid)
-        {
-            srand(time(NULL));
+	vector<int> generator;
+	deckPosition = 0;
+	for (int inputToVector = 0; inputToVector < 52; inputToVector++)
+	{
+		generator.push_back(inputToVector);
+	}
 
-            rank = rand() % 13;
-            suit = rand() % 4;
+	srand(time(0));
+	int totalShuffles = rand() % 15;
 
-            if (generated[suit][rank] == 0)
-            {
-                generated[suit][rank] = 1;
-                cardStack[traverse].rank = rank + 2;
-                if (suit == 0)
-                {
-                    cardStack[traverse].suit = Spades;
-                }
-                else if (suit == 1)
-                {
-                    cardStack[traverse].suit = Hearts;
-                }
-                else if (suit == 2)
-                {
-                    cardStack[traverse].suit = Clubs;
-                }
-                else if (suit == 3)
-                {
-                    cardStack[traverse].suit = Diamonds;
-                }
-                isCardValid = true;
-            }
-        }
-    }
+	for (int shuffles = 0; shuffles <= totalShuffles; shuffles++)
+	{
+		random_shuffle(generator.begin(), generator.end());
+	}
+
+	int iterator = 0;
+	for (vector<int>::iterator it = generator.begin(); it != generator.end(); ++it)
+	{
+		if (*it >= 0 && *it <= 12)
+		{
+			cardStack[iterator].suit = Spades;
+			cardStack[iterator].rank = *it + 2;
+		}
+		else if (*it >= 13 && *it <= 25)
+		{
+			cardStack[iterator].suit = Hearts;
+			cardStack[iterator].rank = *it - 11;
+		}
+		else if (*it >= 26 && *it <= 38)
+		{
+			cardStack[iterator].suit = Clubs;
+			cardStack[iterator].rank = *it - 24;
+		}
+		else if (*it >= 39 && *it <= 51)
+		{
+			cardStack[iterator].suit = Diamonds;
+			cardStack[iterator].rank = *it - 37;
+		}
+
+		iterator++;
+	}
 
     cout << "The deck has been shuffled" << endl;
 }
