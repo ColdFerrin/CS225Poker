@@ -39,7 +39,12 @@ void Player::clearHand()
 	options[5] = true;
 }
 
-Player::Player(int tablePosition)
+void Player::setTablePosition(int position)
+{
+	tablePosition = position;
+}
+
+Player::Player()
 {
 	cardsRecived = 0;
 	options[0] = true;

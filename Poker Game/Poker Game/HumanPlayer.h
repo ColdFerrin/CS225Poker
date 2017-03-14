@@ -10,7 +10,7 @@ class HumanPlayer : public Player
 private:
 public:
 	int makeDecision();
-	HumanPlayer(int);
+	HumanPlayer();
 	~HumanPlayer();
 };
 #endif // !HUMANPLAYER_H

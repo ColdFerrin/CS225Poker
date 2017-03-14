@@ -36,7 +36,7 @@ int HumanPlayer::makeDecision()
 	return chosenAction;
 }
 
-HumanPlayer::HumanPlayer(int position) : Player(position)
+HumanPlayer::HumanPlayer()
 {
 }
 
