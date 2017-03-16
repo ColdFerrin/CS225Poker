@@ -8,9 +8,9 @@ class Dealer
 private:
 	Deck* currentDeck;
 public:
-	void createDeck();
-	void deleteDeck();
+	void shuffleDeck();
 	CARD getCard();
+	void showCard(CARD);
 	Dealer();
 	~Dealer();
 };

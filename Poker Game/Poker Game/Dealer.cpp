@@ -1,30 +1,33 @@
 #include "Dealer.h"
 #include<iostream>
 
-void Dealer::createDeck()
+using namespace std;
+void Dealer::shuffleDeck()
 {
+	if (currentDeck != NULL)
+	{
+		delete currentDeck;
+	}
 	currentDeck = new Deck;
-	std::cout << "Created Deck" << std::endl;
-}
-
-void Dealer::deleteDeck()
-{
-	delete currentDeck;
-	std::cout << "Delete Deck" << std::endl;
 }
 
 CARD Dealer::getCard()
 {
 	CARD temp = currentDeck->dealCard();
-	std::cout << "Get card from Deck" << std::endl;
 	return temp;
+}
+
+void Dealer::showCard(CARD card)
+{
 }
 
 Dealer::Dealer()
 {
+	currentDeck = NULL;
 }
 
 
 Dealer::~Dealer()
 {
+	delete currentDeck;
 }
