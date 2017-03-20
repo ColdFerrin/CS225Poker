@@ -24,12 +24,11 @@ Deck::Deck()
 		generator.push_back(inputToVector);
 	}
 
-	srand(time(0));
+	srand(time(NULL));
 	int totalShuffles = rand() % 15;
 
 	for (int shuffles = 0; shuffles <= totalShuffles; shuffles++)
 	{
-		srand(time(NULL));
 		random_shuffle(generator.begin(), generator.end());
 	}
 
