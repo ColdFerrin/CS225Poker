@@ -29,6 +29,7 @@ Deck::Deck()
 
 	for (int shuffles = 0; shuffles <= totalShuffles; shuffles++)
 	{
+		srand(time(NULL));
 		random_shuffle(generator.begin(), generator.end());
 	}
 

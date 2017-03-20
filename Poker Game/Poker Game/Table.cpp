@@ -4,7 +4,7 @@ using namespace std;
 
 void Table::playGame()
 {
-	int playAgain;
+	int playAgain = 0;
 	for (int iterator = 0; iterator < humanPlayers; iterator++)
 	{
 		playersAtTable[iterator] = new HumanPlayer;
@@ -20,7 +20,7 @@ void Table::playGame()
 
 	do
 	{
-		dealer.shuffleDeck;
+		dealer.shuffleDeck();
 		//set players table position
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
@@ -31,72 +31,87 @@ void Table::playGame()
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
-			playersAtTable[currentPosition]->collectCard(dealer.getCard);
+			playersAtTable[currentPosition]->collectCard(dealer.getCard());
 		}
 		//deal second card
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
-			playersAtTable[currentPosition]->collectCard(dealer.getCard);
+			playersAtTable[currentPosition]->collectCard(dealer.getCard());
 		}
 		//ask players for initial action
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
 			int decision = playersAtTable[currentPosition]->makeDecision();
-			if (decision = 5)
+			if (decision == 5)
 			{
-				playersAtTable[currentPosition]->clearHand;
+				playersAtTable[currentPosition]->clearHand();
 			}
 		}
-		burnCards[0] = dealer.getCard;
-		tableCards[0] = dealer.getCard;
-		tableCards[1] = dealer.getCard;
-		tableCards[2] = dealer.getCard;
+		burnCards[0] = dealer.getCard();
+		tableCards[0] = dealer.getCard();
+		tableCards[1] = dealer.getCard();
+		tableCards[2] = dealer.getCard();
 		//ask player for second action
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			int decision;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
-			if (playersAtTable[currentPosition]->cardsInHand == 2)
+			if ((int)playersAtTable[currentPosition]->cardsInHand() == 2)
 			{
 				decision = playersAtTable[currentPosition]->makeDecision();
 			}
-			if (decision = 5)
+			else
 			{
-				playersAtTable[currentPosition]->clearHand;
+				decision = 5;
+			}
+
+			if (decision == 5)
+			{
+				playersAtTable[currentPosition]->clearHand();
 			}
 		}
-		burnCards[1] = dealer.getCard;
-		tableCards[3] = dealer.getCard;
+		burnCards[1] = dealer.getCard();
+		tableCards[3] = dealer.getCard();
 		//ask player for third action
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			int decision;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
-			if (playersAtTable[currentPosition]->cardsInHand == 2)
+			if ((int) playersAtTable[currentPosition]->cardsInHand() == 2)
 			{
 				decision = playersAtTable[currentPosition]->makeDecision();
 			}
-			if (decision = 5)
+			else
 			{
-				playersAtTable[currentPosition]->clearHand;
+				decision = 5;
+			}
+
+			if (decision == 5)
+			{
+				playersAtTable[currentPosition]->clearHand();
 			}
 		}
-		burnCards[2] = dealer.getCard;
-		tableCards[4] = dealer.getCard;
+		burnCards[2] = dealer.getCard();
+		tableCards[4] = dealer.getCard();
 		//ask player for final action
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			int decision;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
-			if (playersAtTable[currentPosition]->cardsInHand == 2)
+			if ((int) playersAtTable[currentPosition]->cardsInHand() == 2)
 			{
 				decision = playersAtTable[currentPosition]->makeDecision();
 			}
-			if (decision = 5)
+			else
 			{
-				playersAtTable[currentPosition]->clearHand;
+				decision = 5;
+			}
+
+			if (decision == 5)
+			{
+				playersAtTable[currentPosition]->clearHand();
 			}
 		}
 
@@ -126,6 +141,7 @@ Table::Table()
 	cout << "How many people will be playing? ";
 	cin >> humanPlayers;
 	numberOfPlayers = humanPlayers;
+	dealerPosition = 0;
 }
 
 Table::~Table()

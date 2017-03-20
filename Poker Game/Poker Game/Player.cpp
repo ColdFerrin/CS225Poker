@@ -7,6 +7,7 @@ void Player::collectCard(CARD newCard)
 		hand[cardsRecived].suit = newCard.suit;
 		hand[cardsRecived].rank = newCard.rank;
 	}
+	cardsRecived++;
 }
 
 int Player::cardsInHand()
