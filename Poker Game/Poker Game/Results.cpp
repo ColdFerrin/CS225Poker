@@ -9,9 +9,9 @@ Results::Results()
 	int winDecider = 0;
 
 	int temp;
-	for(int i = 0; i < 4; i++)                                   // Ranks in order from greatest to least
+	for(int i = 0; i < 6; i++)                                   // Ranks in order from greatest to least
 	{
-		for(int j = i+1; j < 5; j++)
+		for(int j = i+1; j < 7; j++)
 		{
 			if (cardStack[i].rank < cardStack[j].rank)               
 			{ 
@@ -28,10 +28,10 @@ Results::Results()
 	}
 	
 	int flushCheck, isFlush;
-	for(int flushMove = 0; flushMove < 5; flushMove++) 
+	for(int flushMove = 0; flushMove < 7; flushMove++) 
 	{
 		flushCheck = 0;
-		for(int flushMoving = flushMove + 1; flushMoving < 5; flushMoving++) 
+		for(int flushMoving = flushMove + 1; flushMoving < 7; flushMoving++) 
 		{
 			if (cardStack[flushMove].suit == cardStack[flushMoving].suit)
 				flushCheck++;
@@ -43,7 +43,7 @@ Results::Results()
 	int straightChance = 0;
 	int movingStraight = 1;
 	int isStraight;
-	for(int change = 0; change <5; change++)                      //Checks for Straights
+	for(int change = 0; change <7; change++)                      //Checks for Straights
 	{
 		if(cardStack[change].rank - cardStack[movingStraight].rank == 1)
 			straightChance++;
@@ -53,15 +53,20 @@ Results::Results()
 	if(straightChance == 4)
 		isStraight = 1;
 	
-	for(int move = 0; move<5; move++)                           //Determines all pairs, two pairs, trips, Full House, and Quads
+	for(int move = 0; move<7; move++)                           //Determines all pairs, two pairs, trips, Full House, and Quads
 	{
-		for(int moving = move+1; moving <5; moving++)
+		for(int moving = move+1; moving <7; moving++)
 		{
 			if(cardStack[move].rank == cardStack[moving].rank)
 				winDecider++;
+			if(winDecider == 7 || winDecider == 6 || winDecider == 3 || winDecider == 2 || winDecider == 1)           //Determines winning card
+				winningCard = cardStack[move].rank;
+			if(winDecider == 6 || winDecider == 2)
+				secondWiningCard = cardStack[moving].rank; 
 		}
 	}
-	
+	// If its Full for first check when its trips then pair
+	// Set another winning hand for full and two pair
 	if (isStraight == 1 && isFlush == 1 && cardStack[0].rank == 14)         //Determines what rank of what someone has 
 		winningHand = 9;
 	else if (isStraight == 1 && isFlush == 1)
@@ -81,18 +86,43 @@ Results::Results()
 	else if(winDecider == 1)
 		winningHand = 1;
 	else                                                   //To return high card if needed
-    {
-		int highCard = 0;
+	{
+		winningCard = 1;
 		for(int highChange = 0; highChange <7; highChange++)
 		{
-			if(cardStack[highChange].rank > highCard)
+			if(cardStack[highChange].rank > winningCard)
 			{     
-				highCard = cardStack[highChange].rank;
+				winningCard = cardStack[highChange].rank;
+				secondWinningCard = cardstack[highChange].rank;
 			}
 		}
 		winningHand = 0;
 	}
 }
+
+//void Results::winnerCheck()                                                // To decide who has the winning had
+//{
+//      if(player1 > player2)
+//              cout << Player 1 wins" << endl;
+//      else if(player1 < player2)
+//              cout << PLayer 2 wins" << endl;
+//      else if(player1 = player 2)
+//      {
+//              if(player1.winningCard > player2.winningCard)  
+//                      cout << "Player 1 wins" << endl;
+//              else if(player1.winningCard < player2.winningCard)  
+//                      cout << "Player 2 wins" << endl;
+//              else if(player1.winningCard == player2.winningCard)  
+//              {
+//                      if(player1.secondWinningCard > player2.secondWinningCard)  
+//                              cout << "Player 1 wins" << endl;
+//                      else if(player1.secondWinningCard < player2.secondWinningCard)
+//                              cout <<"Player 2 wins" << endl;
+//                      else
+//                              cout << "Chop Pot" << endl;
+//              }
+//      }
+//}
 
 void Results::winningCheck()
 {
@@ -117,3 +147,5 @@ void Results::winningCheck()
 	else
 		cout << "High Card " <<  endl;
 }
+
+
