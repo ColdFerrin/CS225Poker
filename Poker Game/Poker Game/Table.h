@@ -18,6 +18,8 @@ private:
 	Player* playersAtTable[9];
 	CARD burnCards[3];
 	CARD tableCards[5];
+	void displaySuit(int);
+	void displayTable();
 public:
 	void playGame();
     Table();
