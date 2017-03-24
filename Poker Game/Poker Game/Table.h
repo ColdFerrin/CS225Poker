@@ -19,6 +19,7 @@ private:
 	CARD burnCards[3];
 	CARD tableCards[5];
 	void displaySuit(int);
+	void displaySymbol(int,int);
 	void displayTable();
 public:
 	void playGame();

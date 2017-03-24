@@ -8,7 +8,10 @@
 class HumanPlayer : public Player
 {
 private:
+	void displaySuit(int);
+	void displaySymbol(int, int);
 public:
+	void displayHand();
 	int makeDecision();
 	HumanPlayer();
 	~HumanPlayer();

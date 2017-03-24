@@ -29,6 +29,72 @@ void Table::displaySuit(int position)
 	}
 }
 
+void Table::displaySymbol(int position,int place)
+{
+	if (place == 0)
+	{
+		if (tableCards[position].rank == 0)
+		{
+			cout << "  ";
+		}
+		else if (tableCards[position].rank == 10)
+		{
+			cout << "10";
+		}
+		else if (tableCards[position].rank == 11)
+		{
+			cout << "J ";
+		}
+		else if (tableCards[position].rank == 12)
+		{
+			cout << "Q ";
+		}
+		else if (tableCards[position].rank == 13)
+		{
+			cout << "K ";
+		}
+		else if (tableCards[position].rank == 14)
+		{
+			cout << "A ";
+		}
+		else
+		{
+			cout << tableCards[position].rank << " ";
+		}
+	}
+	else if (place == 1)
+	{
+		if (tableCards[position].rank == 0)
+		{
+			cout << "__";
+		}
+		else if (tableCards[position].rank == 10)
+		{
+			cout << "10";
+		}
+		else if (tableCards[position].rank == 11)
+		{
+			cout << "_J";
+		}
+		else if (tableCards[position].rank == 12)
+		{
+			cout << "_Q";
+		}
+		else if (tableCards[position].rank == 13)
+		{
+			cout << "_K";
+		}
+		else if (tableCards[position].rank == 14)
+		{
+			cout << "_A";
+		}
+		else
+		{
+			cout << "_" << tableCards[position].rank;
+		}
+	}
+}
+
 void Table::displayTable()
 {
 #if defined(_WIN32) || defined(__MSDOS__)
@@ -37,44 +103,21 @@ void Table::displayTable()
 	cout << "\033[2J";
 #endif
 
-	char outputSymbol[5] = { 0 };
-	for (int iterator = 0; iterator < 5; iterator++)
-	{
-		if (tableCards[iterator].rank == 0)
-		{
-			outputSymbol[iterator] = ' ';
-		}
-		else if (tableCards[iterator].rank == 11)
-		{
-			outputSymbol[iterator] = 'J';
-		}
-		else if (tableCards[iterator].rank == 12)
-		{
-			outputSymbol[iterator] = 'Q';
-		}
-		else if (tableCards[iterator].rank == 13)
-		{
-			outputSymbol[iterator] = 'K';
-		}
-		else if (tableCards[iterator].rank == 14)
-		{
-			outputSymbol[iterator] = 'A';
-		}
-		else
-		{
-			outputSymbol[iterator] = (tableCards[iterator].rank + 48);
-		}
-
-
-	}
-	cout << " ______________________________________________________________________________ " << endl
-		 << "|     _________      _________      _________      _________      _________    |" << endl
-		 << "|    |" << outputSymbol[0] << "        |    |"
-		 << outputSymbol[1] << "        |    |"
-		 << outputSymbol[2] << "        |    |"
-		 << outputSymbol[3] << "        |    |"
-		 << outputSymbol[4] << "        |   |" << endl;
-	cout << "|    |";
+	
+	cout << " _____________________________________________________________________________ " << endl
+		 << "|    _________      _________      _________      _________      _________    |" << endl
+		 << "|   |";
+	displaySymbol(0,0);
+	cout << "       |    |";
+	displaySymbol(1,0);
+	cout << "       |    |";
+	displaySymbol(2,0);
+	cout << "       |    |";
+	displaySymbol(3,0);
+	cout << "       |    |";
+	displaySymbol(4,0);
+	cout << "       |   |" << endl;
+	cout << "|   |";
 	displaySuit(0);
 	cout << "        |    |";
 	displaySuit(1);
@@ -85,8 +128,8 @@ void Table::displayTable()
 	cout << "        |    |";
 	displaySuit(4);
 	cout << "        |   |" << endl
-		 << "|    |         |    |         |    |         |    |         |    |         |   |" << endl
-		 << "|    |    ";
+		 << "|   |         |    |         |    |         |    |         |    |         |   |" << endl
+		 << "|   |    ";
 	displaySuit(0);
 	cout << "    |    |    ";
 	displaySuit(1);
@@ -97,8 +140,8 @@ void Table::displayTable()
 	cout << "    |    |    ";
 	displaySuit(4); 
 	cout << "    |   |" << endl
-		 << "|    |         |    |         |    |         |    |         |    |         |   |" << endl
-		 << "|    |        ";
+		 << "|   |         |    |         |    |         |    |         |    |         |   |" << endl
+		 << "|   |        ";
 	displaySuit(0);
 	cout << "|    |        ";
 	displaySuit(1); 
@@ -109,12 +152,18 @@ void Table::displayTable()
 	cout << "|    |        ";
 	displaySuit(4);
 	cout << "|   |" << endl
-		 << "|    |________"<< outputSymbol[0] <<"|    |________"
-		 << outputSymbol[1] <<"|    |________"
-		 << outputSymbol[2] <<"|    |________"
-		 << outputSymbol[3] <<"|    |________"
-		 << outputSymbol[4] <<"|   |" << endl
-		 << "|______________________________________________________________________________|" << endl;
+		 << "|   |_______";
+	displaySymbol(0, 1);
+	cout << "|    |_______";
+	displaySymbol(1, 1);
+	cout << "|    |_______";
+	displaySymbol(2, 1);
+	cout << "|    |_______";
+	displaySymbol(3, 1);
+	cout << "|    |_______";
+	displaySymbol(4, 1);
+	cout << "|   |" << endl
+		 << "|_____________________________________________________________________________|" << endl;
 }
 
 void Table::playGame()
@@ -164,6 +213,8 @@ void Table::playGame()
 		{
 			displayTable();
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
+			cout << "It is player " << currentPosition + 1 << "'s Turn" << endl << endl;
+			playersAtTable[currentPosition]->displayHand();
 			int decision = playersAtTable[currentPosition]->makeDecision();
 			if (decision == 5)
 			{
@@ -181,6 +232,7 @@ void Table::playGame()
 			displayTable();
 			int decision;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
+			playersAtTable[currentPosition]->displayHand();
 			if ((int)playersAtTable[currentPosition]->cardsInHand() == 2)
 			{
 				decision = playersAtTable[currentPosition]->makeDecision();
@@ -203,6 +255,7 @@ void Table::playGame()
 			displayTable();
 			int decision;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
+			playersAtTable[currentPosition]->displayHand();
 			if ((int) playersAtTable[currentPosition]->cardsInHand() == 2)
 			{
 				decision = playersAtTable[currentPosition]->makeDecision();
@@ -225,6 +278,7 @@ void Table::playGame()
 			displayTable();
 			int decision;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
+			playersAtTable[currentPosition]->displayHand();
 			if ((int) playersAtTable[currentPosition]->cardsInHand() == 2)
 			{
 				decision = playersAtTable[currentPosition]->makeDecision();
