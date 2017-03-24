@@ -225,7 +225,6 @@ void Table::playGame()
 		tableCards[0] = dealer.getCard();
 		tableCards[1] = dealer.getCard();
 		tableCards[2] = dealer.getCard();
-		displayTable();
 		//ask player for second action
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{

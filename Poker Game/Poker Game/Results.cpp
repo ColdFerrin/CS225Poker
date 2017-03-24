@@ -62,7 +62,7 @@ Results::Results()
 			if(winDecider == 7 || winDecider == 6 || winDecider == 3 || winDecider == 2 || winDecider == 1)           //Determines winning card
 				winningCard = cardStack[move].rank;
 			if(winDecider == 6 || winDecider == 2)
-				secondWiningCard = cardStack[moving].rank; 
+				secondWinningCard = cardStack[moving].rank;
 		}
 	}
 	// If its Full for first check when its trips then pair
@@ -93,7 +93,7 @@ Results::Results()
 			if(cardStack[highChange].rank > winningCard)
 			{     
 				winningCard = cardStack[highChange].rank;
-				secondWinningCard = cardstack[highChange].rank;
+				secondWinningCard = cardStack[highChange].rank;
 			}
 		}
 		winningHand = 0;
