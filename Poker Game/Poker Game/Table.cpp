@@ -166,9 +166,37 @@ void Table::displayTable()
 		 << "|_____________________________________________________________________________|" << endl;
 }
 
+bool Table::runAgain()
+{
+	char repeatInput;
+	cout << "Would you like to play another hand(y/n)? ";
+	cin >> repeatInput;
+	const string MSG = "Invalid input.";
+	if (tolower(repeatInput) == 'y')
+	{
+		playAgain = 1;
+		return false;
+		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
+		{
+			playersAtTable[iterator]->clearHand();
+		}
+		dealerPosition++;
+	}
+	else if (tolower(repeatInput) == 'n')
+	{
+		playAgain = 0;
+		return false;
+		delete[] playersAtTable;
+	}
+	else
+	{
+		throw(MSG);
+	}
+}
+
 void Table::playGame()
 {
-	int playAgain = 0;
+	playAgain = 0;
 	for (int iterator = 0; iterator < humanPlayers; iterator++)
 	{
 		playersAtTable[iterator] = new HumanPlayer;
@@ -231,6 +259,7 @@ void Table::playGame()
 			displayTable();
 			int decision;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
+			cout << "It is player " << currentPosition + 1 << "'s Turn" << endl << endl;
 			playersAtTable[currentPosition]->displayHand();
 			if ((int)playersAtTable[currentPosition]->cardsInHand() == 2)
 			{
@@ -254,6 +283,7 @@ void Table::playGame()
 			displayTable();
 			int decision;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
+			cout << "It is player " << currentPosition + 1 << "'s Turn" << endl << endl;
 			playersAtTable[currentPosition]->displayHand();
 			if ((int) playersAtTable[currentPosition]->cardsInHand() == 2)
 			{
@@ -277,6 +307,7 @@ void Table::playGame()
 			displayTable();
 			int decision;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
+			cout << "It is player " << currentPosition + 1 << "'s Turn" << endl << endl;
 			playersAtTable[currentPosition]->displayHand();
 			if ((int) playersAtTable[currentPosition]->cardsInHand() == 2)
 			{
@@ -297,23 +328,13 @@ void Table::playGame()
 		bool invalidExitInput = true;
 		do
 		{
-			cout << "Would you like to play another hand(y/n)? ";
-			cin >> repeatInput;
-			if (tolower(repeatInput) == 'y')
+			try
 			{
-				playAgain = 1;
-				invalidExitInput = false;
-				for (int iterator = 0; iterator < numberOfPlayers; iterator++)
-				{
-					playersAtTable[iterator]->clearHand();
-				}
-				dealerPosition++;
+				invalidExitInput = runAgain();
 			}
-			else if (tolower(repeatInput) == 'n')
+			catch (string msg)
 			{
-				playAgain = 0;
-				invalidExitInput = false;
-				delete[] playersAtTable;
+				cout << msg << endl;
 			}
 		} while (invalidExitInput);
 

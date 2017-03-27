@@ -3,6 +3,8 @@
 #define TABLE_H
 
 #include <iostream>
+#include <string>
+#include <cstdlib>
 #include "Dealer.h"
 #include "HumanPlayer.h"
 #include "Results.h"
@@ -14,6 +16,7 @@ private:
 	int humanPlayers;
 	int aiPlayers;
 	int dealerPosition;
+	int playAgain;
 	Dealer dealer;
 	Player* playersAtTable[9];
 	CARD burnCards[3];
@@ -21,6 +24,7 @@ private:
 	void displaySuit(int);
 	void displaySymbol(int,int);
 	void displayTable();
+	bool runAgain();
 public:
 	void playGame();
     Table();
