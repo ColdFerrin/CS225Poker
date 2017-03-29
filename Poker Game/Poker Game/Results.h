@@ -12,10 +12,17 @@ private:
 	int winningHand;
 	int winningCard;
 	int secondWinningCard;
-public:
-	Results();
-	void winningCheck();
+	bool* hasFolded;
+	CARD tableCards[5];
+	CARD hands[9][2];
 	void winnerCheck();
+public:
+	Results(int);
+	~Results();
+	void decideStrength(int);
+	void winningCheck();
+	void playerFolds(int);
+	void recordCard(int, int, CARD);
 };
 
 #endif // RESULTS_H

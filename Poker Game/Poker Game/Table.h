@@ -25,6 +25,7 @@ private:
 	void displaySymbol(int,int);
 	void displayTable();
 	bool runAgain();
+	Results* results;
 public:
 	void playGame();
     Table();

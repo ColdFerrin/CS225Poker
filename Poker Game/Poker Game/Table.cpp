@@ -212,6 +212,7 @@ void Table::playGame()
 
 	do
 	{
+		results = new Results(numberOfPlayers);
 		dealer.shuffleDeck();
 		//zero out table cards
 		for (int iterator = 0; iterator < 5; iterator++)
@@ -228,13 +229,17 @@ void Table::playGame()
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
-			playersAtTable[currentPosition]->collectCard(dealer.getCard());
+			CARD temp = dealer.getCard();
+			playersAtTable[currentPosition]->collectCard(temp);
+			results->recordCard(currentPosition, 0, temp);
 		}
 		//deal second card
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
-			playersAtTable[currentPosition]->collectCard(dealer.getCard());
+			CARD temp = dealer.getCard();
+			playersAtTable[currentPosition]->collectCard(temp);
+			results->recordCard(currentPosition, 1, temp);
 		}
 		//ask players for initial action
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
@@ -247,6 +252,7 @@ void Table::playGame()
 			if (decision == 5)
 			{
 				playersAtTable[currentPosition]->clearHand();
+				results->playerFolds(currentPosition);
 			}
 		}
 		burnCards[0] = dealer.getCard();
@@ -257,7 +263,7 @@ void Table::playGame()
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			displayTable();
-			int decision;
+			int decision = 5;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
 			cout << "It is player " << currentPosition + 1 << "'s Turn" << endl << endl;
 			playersAtTable[currentPosition]->displayHand();
@@ -265,14 +271,11 @@ void Table::playGame()
 			{
 				decision = playersAtTable[currentPosition]->makeDecision();
 			}
-			else
-			{
-				decision = 5;
-			}
 
 			if (decision == 5)
 			{
 				playersAtTable[currentPosition]->clearHand();
+				results->playerFolds(currentPosition);
 			}
 		}
 		burnCards[1] = dealer.getCard();
@@ -281,7 +284,7 @@ void Table::playGame()
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			displayTable();
-			int decision;
+			int decision = 5;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
 			cout << "It is player " << currentPosition + 1 << "'s Turn" << endl << endl;
 			playersAtTable[currentPosition]->displayHand();
@@ -289,14 +292,11 @@ void Table::playGame()
 			{
 				decision = playersAtTable[currentPosition]->makeDecision();
 			}
-			else
-			{
-				decision = 5;
-			}
 
 			if (decision == 5)
 			{
 				playersAtTable[currentPosition]->clearHand();
+				results->playerFolds(currentPosition);
 			}
 		}
 		burnCards[2] = dealer.getCard();
@@ -305,7 +305,7 @@ void Table::playGame()
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			displayTable();
-			int decision;
+			int decision = 5;
 			int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
 			cout << "It is player " << currentPosition + 1 << "'s Turn" << endl << endl;
 			playersAtTable[currentPosition]->displayHand();
@@ -313,19 +313,17 @@ void Table::playGame()
 			{
 				decision = playersAtTable[currentPosition]->makeDecision();
 			}
-			else
-			{
-				decision = 5;
-			}
 
 			if (decision == 5)
 			{
 				playersAtTable[currentPosition]->clearHand();
+				results->playerFolds(currentPosition);
 			}
 		}
 
 		char repeatInput = 0;
 		bool invalidExitInput = true;
+		delete results;
 		do
 		{
 			try
