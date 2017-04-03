@@ -59,5 +59,8 @@
     <ClInclude Include="HumanPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PokerGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -248,13 +248,31 @@ void Table::playGame()
 			for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 			{
 				displayTable();
+				bool invalidDecision = true;
 				int decision = 5;
 				int currentPosition = (iterator + dealerPosition) % (numberOfPlayers);
 				cout << "It is player " << currentPosition + 1 << "'s Turn" << endl << endl;
 				playersAtTable[currentPosition]->displayHand();
 				if ((int)playersAtTable[currentPosition]->cardsInHand() == 2)
 				{
-					decision = playersAtTable[currentPosition]->makeDecision();
+					do
+					{
+						try
+						{
+							decision = playersAtTable[currentPosition]->makeDecision();
+							invalidDecision = false;
+						}
+						catch (int& x)
+						{
+							cout << x << " is not a valid action. Try again." << endl << endl;
+						}
+						catch(string& err)
+						{
+							cout << err << endl << endl;
+							cin.clear();
+							cin.ignore(INT_MAX, '\n');
+						}
+					} while (invalidDecision);
 				}
 
 				if (decision == 5)
@@ -292,7 +310,7 @@ void Table::playGame()
 			{
 				invalidExitInput = runAgain();
 			}
-			catch (string msg)
+			catch (string& msg)
 			{
 				cout << msg << endl;
 			}
@@ -303,8 +321,17 @@ void Table::playGame()
 
 Table::Table()
 {
+	const string ERR = "This is not a valid data type.";
 	cout << "How many people will be playing? ";
 	cin >> humanPlayers;
+	if (!cin)
+	{
+		throw(ERR);
+	}
+	else if (humanPlayers < 1 || humanPlayers > 9)
+	{
+		throw(humanPlayers);
+	}
 	numberOfPlayers = humanPlayers;
 	dealerPosition = 0;
 }

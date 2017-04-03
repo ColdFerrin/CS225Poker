@@ -157,6 +157,7 @@
     <ClInclude Include="Deck.h" />
     <ClInclude Include="HumanPlayer.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PokerGame.h" />
     <ClInclude Include="Results.h" />
     <ClInclude Include="Table.h" />
   </ItemGroup>

@@ -133,6 +133,8 @@ void HumanPlayer::displayHand()
 
 int HumanPlayer::makeDecision()
 {
+	
+	const string ERR = "This is not a valid data type try again.";
 	cout << "Your options are to ";
 	if (options[0])
 	{
@@ -161,6 +163,14 @@ int HumanPlayer::makeDecision()
 	cout << "Please type the number for your desired action:";
 	int chosenAction = 0;
 	cin >> chosenAction;
+	if (!cin)
+	{
+		throw(ERR);
+	}
+	else if (chosenAction < 0 || chosenAction > 5 || options[chosenAction] == false)
+	{
+		throw(chosenAction);
+	}
 	return chosenAction;
 }
 
