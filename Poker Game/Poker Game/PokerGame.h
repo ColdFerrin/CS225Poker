@@ -4,6 +4,7 @@
 #define POKERGAME_H
 
 #include "Table.h"
+#include<climits>
 using namespace std;
 
 

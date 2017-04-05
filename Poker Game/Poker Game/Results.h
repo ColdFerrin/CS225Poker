@@ -1,9 +1,9 @@
 #pragma once
 
-using namespace std;
-
 #ifndef RESULTS_H
 #define RESULTS_H
+
+using namespace std;
 
 #include<cmath>
 #include<iostream>
@@ -11,7 +11,7 @@ using namespace std;
 
 class Results
 {
-	
+	friend ostream& operator<<(ostream&, Results&);
 private:
 	int theWinner;
 	int* winningHand;
@@ -26,11 +26,10 @@ public:
 	Results(int);
 	~Results();
 	void winningCheck(int);
-	int getWinner();
+	void getWinner();
 	void playerFolds(int);
 	void recordCard(int, int, CARD);
 	void recordTableCard(int, CARD);
-	//friend ostream& operator<<(ostream&, Results&);
 };
 
 #endif // RESULTS_H

@@ -312,7 +312,8 @@ void Table::playGame()
 		cout << "\033[2J";
 #endif
 
-		cout << "Player " << results->getWinner() + 1 << " Wins!!!!!!!!!!!!" << endl << endl;
+		results->getWinner();
+		cout << *results;
 
 		char repeatInput = 0;
 		bool invalidExitInput = true;

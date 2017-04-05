@@ -113,13 +113,12 @@ void Results::decideStrength(int tablePosition)
 }
 
 
-int Results::getWinner()                                                // To decide who has the winning had
+void Results::getWinner()                                                // To decide who has the winning had
 {
 	for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 	{
 		decideStrength(iterator);
 	}
-	int winner = 0;
 	int currentWinner = 0;
 	int currentlyChopped = 0;
 	for (int iterator = 1; iterator < numberOfPlayers; iterator++)
@@ -155,7 +154,7 @@ int Results::getWinner()                                                // To de
 			}
 		}
 	}
-	return currentWinner;
+	theWinner = currentWinner + 1;
 }
 
 void Results::winningCheck(int tablePosition)
@@ -195,10 +194,9 @@ void Results::recordTableCard(int position, CARD card)
 {
 	tableCards[position] = card;
 }
- /*
-ostream & operator<<(ostream& os, Results& current)
+
+ostream& operator<<(ostream& os, Results& current)
 {
-	os << "The Winner is Player " << current.getWinner() << endl << endl;
+	os << "The Winner is Player " << current.theWinner << endl << endl;
 	return os;
 }
-*/
