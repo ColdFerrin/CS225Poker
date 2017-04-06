@@ -3,26 +3,33 @@
 #ifndef RESULTS_H
 #define RESULTS_H
 
+using namespace std;
+
+#include<cmath>
+#include<iostream>
 #include "Card.h"
 
 class Results
 {
+	friend ostream& operator<<(ostream&, Results&);
 private:
 	int theWinner;
-	int winningHand;
-	int winningCard;
-	int secondWinningCard;
-	bool* hasFolded;
+	int* winningHand;
+	int* winningCard;
+	int* secondWinningCard;
+	bool* hasNotFolded;
+	int numberOfPlayers;
 	CARD tableCards[5];
 	CARD hands[9][2];
-	void winnerCheck();
+	void decideStrength(int);
 public:
 	Results(int);
 	~Results();
-	void decideStrength(int);
-	void winningCheck();
+	void winningCheck(int);
+	void getWinner();
 	void playerFolds(int);
 	void recordCard(int, int, CARD);
+	void recordTableCard(int, CARD);
 };
 
 #endif // RESULTS_H

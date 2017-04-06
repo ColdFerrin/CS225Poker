@@ -301,6 +301,15 @@ void Table::playGame()
 			}
 		}
 
+#if defined(_WIN32) || defined(__MSDOS__)
+		system("cls");
+#else
+		cout << "\033[2J";
+#endif
+
+		results->getWinner();
+		cout << *results;
+
 		char repeatInput = 0;
 		bool invalidExitInput = true;
 		delete results;

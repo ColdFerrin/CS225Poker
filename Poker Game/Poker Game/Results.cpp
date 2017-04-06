@@ -1,42 +1,46 @@
-#include<iostream>
 #include "Results.h"
 
 using namespace std;
 
-Results::Results(int numberOfPlayers) 
+Results::Results(int numberOfPlayers)
 {
-	hasFolded = new bool[numberOfPlayers];
+	hasNotFolded = new bool[numberOfPlayers];
+	winningHand = new int[numberOfPlayers];
+	winningCard = new int[numberOfPlayers];
+	secondWinningCard = new int[numberOfPlayers];
+	Results::numberOfPlayers = numberOfPlayers;
 }
 
 Results::~Results()
 {
-	delete hasFolded;
+	delete hasNotFolded;
+	delete winningHand;
 }
 
 void Results::decideStrength(int tablePosition)
 {
-	if (!hasFolded)
+	if (hasNotFolded)
 	{
 		CARD cardStack[7];
 		for (int i = 0; i < 5; i++)
 		{
 			cardStack[i] = tableCards[i];
 		}
-		cardStack[5] = hands[tablePosition][1];
-		cardStack[6] = hands[tablePosition][2];
+		cardStack[5] = hands[tablePosition][0];
+		cardStack[6] = hands[tablePosition][1];
 
 		int winDecider = 0;
-		
-		int temp;
-		for (int i = 0; i < 5; i++)                                   // Ranks in order from greatest to least
+
+		CARD temp;
+		for (int i = 0; i < 6; i++)                                   // Ranks in order from greatest to least
 		{
-			for (int j = i + 1; j < 6; j++)
+			for (int j = i + 1; j < 7; j++)
 			{
 				if (cardStack[i].rank < cardStack[j].rank)
 				{
-					temp = cardStack[i].rank;
-					cardStack[i].rank = cardStack[j].rank;
-					cardStack[j].rank = temp;
+					temp = cardStack[i];
+					cardStack[i] = cardStack[j];
+					cardStack[j] = temp;
 				}
 			}
 		}
@@ -45,7 +49,7 @@ void Results::decideStrength(int tablePosition)
 		for (int flushMove = 0; flushMove < 6; flushMove++)
 		{
 			flushCheck = 0;
-			for (int flushMoving = flushMove + 1; flushMoving < 6; flushMoving++)
+			for (int flushMoving = flushMove + 1; flushMoving < 7; flushMoving++)
 			{
 				if (cardStack[flushMove].suit == cardStack[flushMoving].suit)
 					flushCheck++;
@@ -55,13 +59,13 @@ void Results::decideStrength(int tablePosition)
 		}
 
 		int straightChance = 0;
-		int movingStraight = 1;
 		int isStraight;
 		for (int change = 0; change < 6; change++)                      //Checks for Straights
 		{
-			if (cardStack[change].rank - cardStack[movingStraight].rank == 1)
+			if (cardStack[change].rank - cardStack[change + 1].rank == 1)
 				straightChance++;
-			movingStraight++;
+			else
+				straightChance = 0;
 		}
 
 		if (straightChance == 4)
@@ -69,107 +73,130 @@ void Results::decideStrength(int tablePosition)
 
 		for (int move = 0; move < 6; move++)                           //Determines all pairs, two pairs, trips, Full House, and Quads
 		{
-			for (int moving = move + 1; moving < 6; moving++)
+			for (int moving = move + 1; moving < 7; moving++)
 			{
 				if (cardStack[move].rank == cardStack[moving].rank)
 					winDecider++;
 				if (winDecider == 7 || winDecider == 6 || winDecider == 3 || winDecider == 2 || winDecider == 1)           //Determines winning card
-					winningCard = cardStack[move].rank;
+					winningCard[tablePosition] = cardStack[move].rank;
 				if (winDecider == 6 || winDecider == 2)
-					secondWinningCard = cardStack[moving].rank;
+					secondWinningCard[tablePosition] = cardStack[moving].rank;
 			}
 		}
 		// If its Full for first check when its trips then pair
 		// Set another winning hand for full and two pair
 		if (isStraight == 1 && isFlush == 1 && cardStack[0].rank == 14)         //Determines what rank of what someone has 
-			winningHand = 9;
+			winningHand[tablePosition] = 9;
 		else if (isStraight == 1 && isFlush == 1)
-			winningHand = 8;
+			winningHand[tablePosition] = 8;
 		else if (winDecider == 6)
-			winningHand = 7;
+			winningHand[tablePosition] = 7;
 		else if (winDecider == 4)
-			winningHand = 6;
+			winningHand[tablePosition] = 6;
 		else if (isFlush == 1)
-			winningHand = 5;
+			winningHand[tablePosition] = 5;
 		else if (isStraight == 1)
-			winningHand = 4;
+			winningHand[tablePosition] = 4;
 		else if (winDecider == 3)
-			winningHand = 3;
+			winningHand[tablePosition] = 3;
 		else if (winDecider == 2)
-			winningHand = 2;
+			winningHand[tablePosition] = 2;
 		else if (winDecider == 1)
-			winningHand = 1;
+			winningHand[tablePosition] = 1;
 		else                                                   //To return high card if needed
 		{
-			winningCard = 1;
-			for (int highChange = 0; highChange < 7; highChange++)
-			{
-				if (cardStack[highChange].rank > winningCard)
-				{
-					winningCard = cardStack[highChange].rank;
-					secondWinningCard = cardStack[highChange].rank;
-				}
-			}
-			winningHand = 0;
+			winningCard[tablePosition] = cardStack[0].rank;
+			secondWinningCard[tablePosition] = cardStack[1].rank;
+			winningHand[tablePosition] = 0;
 		}
 	}
 }
 
-/*
-void Results::winnerCheck()                                                // To decide who has the winning had
+
+void Results::getWinner()                                                // To decide who has the winning had
 {
-	if(player1 > player2)
-		cout << "Player 1 wins" << endl;
-	else if(player1 < player2)
-		cout << "PLayer 2 wins" << endl;
-	else if(player1 = player 2)
+	for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 	{
-		if(player1.winningCard > player2.winningCard)  
-			cout << "Player 1 wins" << endl;
-		else if(player1.winningCard < player2.winningCard)  
-			cout << "Player 2 wins" << endl;
-		else if(player1.winningCard == player2.winningCard)  
+		decideStrength(iterator);
+	}
+	int currentWinner = 0;
+	int currentlyChopped = 0;
+	for (int iterator = 1; iterator < numberOfPlayers; iterator++)
+	{
+		if (winningHand[currentWinner] > winningHand[iterator])
+			currentWinner = currentWinner;
+		else if (winningHand[currentWinner] < winningHand[iterator])
+			currentWinner = iterator;
+		else if (winningHand[currentWinner] == winningHand[iterator])
 		{
-			if(player1.secondWinningCard > player2.secondWinningCard)  
-				cout << "Player 1 wins" << endl;
-			else if(player1.secondWinningCard < player2.secondWinningCard)
-				cout <<"Player 2 wins" << endl;
-			else
-				cout << "Chop Pot" << endl;
+			if (winningCard[currentWinner] > winningCard[iterator])
+				currentWinner = currentWinner;
+			else if (winningCard[currentWinner] < winningCard[iterator])
+				currentWinner = iterator;
+			else if (winningCard[currentWinner] == winningCard[iterator])
+			{
+				if (secondWinningCard[currentWinner] > secondWinningCard[iterator])
+					currentWinner = currentWinner;
+				else if (secondWinningCard[currentWinner] < secondWinningCard[iterator])
+					currentWinner = iterator;
+				else
+				{
+					if (currentlyChopped == 0)
+					{
+						currentlyChopped = (int)pow(currentWinner, 2) + (int)pow(iterator, 2);
+					}
+					else if (currentlyChopped != 0)
+					{
+						currentlyChopped += (int)pow(iterator, 2);
+						currentWinner = iterator;
+					}
+				}
+			}
 		}
 	}
-}*/
+	theWinner = currentWinner + 1;
+}
 
-void Results::winningCheck()
+void Results::winningCheck(int tablePosition)
 {
-	if(winningHand == 9)
+	if (winningHand[tablePosition] == 9)
 		cout << "Royal Flush" << endl;
-	else if(winningHand == 8)
+	else if (winningHand[tablePosition] == 8)
 		cout << "Straight Flush" << endl;
-	else if(winningHand == 7)
+	else if (winningHand[tablePosition] == 7)
 		cout << "Four of a kind" << endl;
-	else if(winningHand == 6)
+	else if (winningHand[tablePosition] == 6)
 		cout << "Full House" << endl;
-	else if(winningHand == 5)
+	else if (winningHand[tablePosition] == 5)
 		cout << "Flush" << endl;
-	else if(winningHand == 4)
-		cout <<"Straight" << endl;
-	else if (winningHand == 3)
-		cout <<"Three of a kind" << endl;
-	else if(winningHand == 2)
-		cout <<" Two Pair" << endl;
-	else if(winningHand == 1)
-		cout <<" Pair" << endl;
+	else if (winningHand[tablePosition] == 4)
+		cout << "Straight" << endl;
+	else if (winningHand[tablePosition] == 3)
+		cout << "Three of a kind" << endl;
+	else if (winningHand[tablePosition] == 2)
+		cout << " Two Pair" << endl;
+	else if (winningHand[tablePosition] == 1)
+		cout << " Pair" << endl;
 	else
-		cout << "High Card " <<  endl;
+		cout << "High Card " << endl;
 }
 
 void Results::playerFolds(int tablePosition)
 {
-	hasFolded[tablePosition] = true;
+	hasNotFolded[tablePosition] = false;
 }
 
 void Results::recordCard(int tablePosition, int cardNumber, CARD card)
 {
 	hands[tablePosition][cardNumber] = card;
+}
+void Results::recordTableCard(int position, CARD card)
+{
+	tableCards[position] = card;
+}
+
+ostream& operator<<(ostream& os, Results& current)
+{
+	os << "The Winner is Player " << current.theWinner << endl << endl;
+	return os;
 }
