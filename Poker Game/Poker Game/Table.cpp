@@ -29,7 +29,7 @@ void Table::displaySuit(int position)
 	}
 }
 
-void Table::displaySymbol(int position,int place)
+void Table::displaySymbol(int position, int place)
 {
 	if (place == 0)
 	{
@@ -103,19 +103,19 @@ void Table::displayTable()
 	cout << "\033[2J";
 #endif
 
-	
+
 	cout << " _____________________________________________________________________________ " << endl
-		 << "|    _________      _________      _________      _________      _________    |" << endl
-		 << "|   |";
-	displaySymbol(0,0);
+		<< "|    _________      _________      _________      _________      _________    |" << endl
+		<< "|   |";
+	displaySymbol(0, 0);
 	cout << "       |    |";
-	displaySymbol(1,0);
+	displaySymbol(1, 0);
 	cout << "       |    |";
-	displaySymbol(2,0);
+	displaySymbol(2, 0);
 	cout << "       |    |";
-	displaySymbol(3,0);
+	displaySymbol(3, 0);
 	cout << "       |    |";
-	displaySymbol(4,0);
+	displaySymbol(4, 0);
 	cout << "       |   |" << endl;
 	cout << "|   |";
 	displaySuit(0);
@@ -128,31 +128,31 @@ void Table::displayTable()
 	cout << "        |    |";
 	displaySuit(4);
 	cout << "        |   |" << endl
-		 << "|   |         |    |         |    |         |    |         |    |         |   |" << endl
-		 << "|   |    ";
+		<< "|   |         |    |         |    |         |    |         |    |         |   |" << endl
+		<< "|   |    ";
 	displaySuit(0);
 	cout << "    |    |    ";
 	displaySuit(1);
 	cout << "    |    |    ";
 	displaySuit(2);
 	cout << "    |    |    ";
-	displaySuit(3); 
+	displaySuit(3);
 	cout << "    |    |    ";
-	displaySuit(4); 
+	displaySuit(4);
 	cout << "    |   |" << endl
-		 << "|   |         |    |         |    |         |    |         |    |         |   |" << endl
-		 << "|   |        ";
+		<< "|   |         |    |         |    |         |    |         |    |         |   |" << endl
+		<< "|   |        ";
 	displaySuit(0);
 	cout << "|    |        ";
-	displaySuit(1); 
+	displaySuit(1);
 	cout << "|    |        ";
-	displaySuit(2); 
+	displaySuit(2);
 	cout << "|    |        ";
-	displaySuit(3); 
+	displaySuit(3);
 	cout << "|    |        ";
 	displaySuit(4);
 	cout << "|   |" << endl
-		 << "|   |_______";
+		<< "|   |_______";
 	displaySymbol(0, 1);
 	cout << "|    |_______";
 	displaySymbol(1, 1);
@@ -163,7 +163,7 @@ void Table::displayTable()
 	cout << "|    |_______";
 	displaySymbol(4, 1);
 	cout << "|   |" << endl
-		 << "|_____________________________________________________________________________|" << endl;
+		<< "|_____________________________________________________________________________|" << endl;
 }
 
 bool Table::runAgain()
@@ -266,7 +266,7 @@ void Table::playGame()
 						{
 							cout << x << " is not a valid action. Try again." << endl << endl;
 						}
-						catch(string& err)
+						catch (string& err)
 						{
 							cout << err << endl << endl;
 							cin.clear();
@@ -312,7 +312,8 @@ void Table::playGame()
 		cout << "\033[2J";
 #endif
 
-		cout << "Player " << results->getWinner() + 1 << " Wins!!!!!!!!!!!!" << endl << endl;
+		results->getWinner();
+		cout << *results;
 
 		char repeatInput = 0;
 		bool invalidExitInput = true;
