@@ -45,31 +45,53 @@ void Results::decideStrength(int tablePosition)
 			}
 		}
 
-		int flushCheck, isFlush;
-		for (int flushMove = 0; flushMove < 6; flushMove++)
+		int flushCheck = 0, isFlush;
+		for (int flushMove = 0; flushMove < 6; flushMove++)               //Checks for flush
 		{
 			flushCheck = 0;
 			for (int flushMoving = flushMove + 1; flushMoving < 7; flushMoving++)
 			{
 				if (cardStack[flushMove].suit == cardStack[flushMoving].suit)
 					flushCheck++;
-				if (flushCheck == 5)
+				else
+					flushCheck = 0;
+				if (flushCheck == 4)
+				{
 					isFlush = 1;
+					winningCard[tablePosition] = cardStack[flushMoving].rank;
+				}
 			}
 		}
 
 		int straightChance = 0;
 		int isStraight;
-		for (int change = 0; change < 6; change++)                      //Checks for Straights
+		bool wheelStraight = false;
+		if(cardStack[0].rank == 14 && cardStack[6].rank == 2 && (cardStack[5].rank == 3 || cardStack[4].rank == 3 || cardStack[3].rank == 3))
+			cardStack[0].rank = 1; 
+//		for (int change = 0; change < 6; change++)                      //Checks for Straights
+//		{
+//			if (cardStack[change].rank - cardStack[change + 1].rank == 1)
+//				straightChance++;
+//			else
+//				straightChance = 0;
+//		}
+		for(int iterator = 0; iterator < 2; iterator++)
 		{
-			if (cardStack[change].rank - cardStack[change + 1].rank == 1)
-				straightChance++;
-			else
-				straightChance = 0;
+			for(int iterator2 = (iterator + 1); iterator2 < (iterator2 + 4); iterator2++)
+			{
+				if (cardStack[iterator].rank - cardStack[iterator2].rank == 1)
+                                	straightChance++;
+                        	else
+                                	straightChance = 0;
+				if(straightChance == 4)
+				{
+					isStraight = 1;
+					winningCard[tablePosition] = cardStack[iterator].rank;
+				}
+			}
 		}
-
-		if (straightChance == 4)
-			isStraight = 1;
+//		if (straightChance >= 4)
+//			isStraight = 1;
 
 		for (int move = 0; move < 6; move++)                           //Determines all pairs, two pairs, trips, Full House, and Quads
 		{
