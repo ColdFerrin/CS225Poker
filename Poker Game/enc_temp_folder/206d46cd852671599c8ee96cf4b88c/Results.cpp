@@ -75,7 +75,7 @@ void Results::decideStrength(int tablePosition)
 		//			else
 		//				straightChance = 0;
 		//		}
-		for (int iterator = 0; iterator < 3; iterator++)
+		for (int iterator = 0; iterator < 2; iterator++)
 		{
 			cout << iterator;
 			for (int iterator2 = (iterator + 1); iterator2 < (iterator + 5); iterator2++)
