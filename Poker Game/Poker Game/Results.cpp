@@ -77,7 +77,6 @@ void Results::decideStrength(int tablePosition)
 		//		}
 		for (int iterator = 0; iterator < 3; iterator++)
 		{
-			cout << iterator;
 			for (int iterator2 = (iterator + 1); iterator2 < (iterator + 5); iterator2++)
 			{
 				if (cardStack[iterator].rank - cardStack[iterator2].rank == 1)
