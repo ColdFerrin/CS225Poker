@@ -175,12 +175,12 @@ bool Table::runAgain()
 	if (tolower(repeatInput) == 'y')
 	{
 		playAgain = 1;
-		return false;
 		for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 		{
 			playersAtTable[iterator]->clearHand();
 		}
 		dealerPosition++;
+		return false;
 	}
 	else if (tolower(repeatInput) == 'n')
 	{
@@ -286,18 +286,23 @@ void Table::playGame()
 			{
 				burnCards[0] = dealer.getCard();
 				tableCards[0] = dealer.getCard();
+				results->recordTableCard(0, tableCards[0]);
 				tableCards[1] = dealer.getCard();
+				results->recordTableCard(1, tableCards[1]);
 				tableCards[2] = dealer.getCard();
+				results->recordTableCard(2, tableCards[2]);
 			}
 			else if (currentStep == 1)
 			{
 				burnCards[1] = dealer.getCard();
 				tableCards[3] = dealer.getCard();
+				results->recordTableCard(3, tableCards[3]);
 			}
 			else if (currentStep == 2)
 			{
 				burnCards[2] = dealer.getCard();
 				tableCards[4] = dealer.getCard();
+				results->recordTableCard(4, tableCards[4]);
 			}
 		}
 
@@ -307,8 +312,7 @@ void Table::playGame()
 		cout << "\033[2J";
 #endif
 
-		results->getWinner();
-		cout << *results;
+		cout << "Player " << results->getWinner() + 1 << " Wins!!!!!!!!!!!!" << endl << endl;
 
 		char repeatInput = 0;
 		bool invalidExitInput = true;

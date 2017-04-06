@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <climits>
 #include "Dealer.h"
 #include "HumanPlayer.h"
 #include "Results.h"
