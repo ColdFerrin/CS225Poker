@@ -11,39 +11,39 @@ void HumanPlayer::displayHand()
 		<< endl
 		<< "|     _________      _________     |"
 		<< endl
-		<< "|    |"
-		<< display.symbol(0, hand[0])
-		<< "       |    |"
-		<< display.symbol(0, hand[1])
-		<< "       |    |"
+		<< "|    |";
+	display.symbol(0, hand[0]);
+	cout << "       |    |";
+	display.symbol(0, hand[1]);
+	cout << "       |    |"
 		<< endl
-		<< "|    |"
-		<< display.suit(hand[0])
-		<< "        |    |"
-		<< display.suit(hand[1])
-		<< "        |    |"
-		<< endl
-		<< "|    |         |    |         |    |"
-		<< endl
-		<< "|    |    "
-		<< display.suit(hand[0])
-		<< "    |    |    "
-		<< display.suit(hand[1])
-		<< "    |    |    "
+		<< "|    |";
+	display.suit(hand[0]);
+	cout << "        |    |";
+	display.suit(hand[1]);
+	cout << "        |    |"
 		<< endl
 		<< "|    |         |    |         |    |"
 		<< endl
-		<< "|    |        "
-		<< display.suit(hand[0])
-		<< "|    |        "
-		<< display.suit(hand[1])
-		<< "|    |        "
+		<< "|    |    ";
+	display.suit(hand[0]);
+	cout << "    |    |    ";
+	display.suit(hand[1]);
+	cout << "    |    |    "
 		<< endl
-		<< "|    |_______"
-		<< display.symbol(1, hand[0])
-		<< "|    |_______"
-		<< display.symbol(1, hand[1])
-		<< "|    |" 
+		<< "|    |         |    |         |    |"
+		<< endl
+		<< "|    |        ";
+	display.suit(hand[0]);
+	cout << "|    |        ";
+	display.suit(hand[1]);
+	cout << "|    |        "
+		<< endl
+		<< "|    |_______";
+	display.symbol(1, hand[0]);
+	cout << "|    |_______";
+	display.symbol(1, hand[1]);
+	cout << "|    |" 
 		<< endl
 		<< "|__________________________________|" 
 		<< endl;

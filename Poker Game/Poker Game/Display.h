@@ -4,6 +4,7 @@
 #define DISPLAY_H
 
 #include<string>
+#include<iostream>
 #include"Card.h"
 
 using namespace std;
@@ -11,8 +12,10 @@ using namespace std;
 class Display
 {
 public:
-	string suit(CARD);
-	string symbol(int, CARD);
+	void suit(CARD);
+	void symbol(int, CARD);
+	string suitToFile(CARD);
+	string symbolToFile(CARD);
 	Display();
 	~Display();
 

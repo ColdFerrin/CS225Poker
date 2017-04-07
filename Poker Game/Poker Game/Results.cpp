@@ -134,6 +134,31 @@ void Results::decideStrength(int tablePosition)
 	}
 }
 
+void Results::printResultsToFile()
+{
+	fstream fptr("HandHistory.txt", ios::out | ios::app);
+
+	fptr << "The table was : "
+		<< display.symbolToFile(tableCards[0]) << display.suitToFile(tableCards[0]) << " "
+		<< display.symbolToFile(tableCards[1]) << display.suitToFile(tableCards[1]) << " "
+		<< display.symbolToFile(tableCards[2]) << display.suitToFile(tableCards[2]) << " "
+		<< display.symbolToFile(tableCards[3]) << display.suitToFile(tableCards[3]) << " "
+		<< display.symbolToFile(tableCards[4]) << display.suitToFile(tableCards[4]) << endl;
+
+	fptr << "The hands were | ";
+	for (int iterator = 0; iterator < numberOfPlayers; iterator++)
+	{
+		for (int currentCard = 0; currentCard < 1; currentCard++)
+		{
+			fptr << display.symbolToFile(hands[iterator][currentCard]) << display.suitToFile(hands[iterator][currentCard]) << " ";
+		}
+		fptr << "| ";
+	}
+	fptr << endl;
+
+	fptr.close();
+}
+
 
 void Results::getWinner()                                                // To decide who has the winning had
 {
@@ -176,6 +201,7 @@ void Results::getWinner()                                                // To d
 			}
 		}
 	}
+	printResultsToFile();
 	theWinner = currentWinner + 1;
 }
 

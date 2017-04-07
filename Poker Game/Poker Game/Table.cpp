@@ -11,73 +11,73 @@ void Table::displayTable()
 #endif
 
 
-	cout << " _____________________________________________________________________________ " 
+	cout << " _____________________________________________________________________________ "
 		<< endl
-		<< "|    _________      _________      _________      _________      _________    |" 
+		<< "|    _________      _________      _________      _________      _________    |"
 		<< endl
-		<< "|   |"
-		<< display.symbol(0, tableCards[0])
-		<< "       |    |"
-		<< display.symbol(0, tableCards[1])
-		<< "       |    |"
-		<< display.symbol(0, tableCards[2])
-		<< "       |    |"
-		<< display.symbol(0, tableCards[3])
-		<< "       |    |"
-		<< display.symbol(0, tableCards[4])
-		<< "       |   |" 
+		<< "|   |";
+	display.symbol(0, tableCards[0]);
+	cout << "       |    |";
+	display.symbol(0, tableCards[1]);
+	cout << "       |    |";
+	display.symbol(0, tableCards[2]);
+	cout << "       |    |";
+	display.symbol(0, tableCards[3]);
+	cout << "       |    |";
+	display.symbol(0, tableCards[4]);
+	cout << "       |   |"
 		<< endl
-		<< "|   |"
-		<< display.suit(tableCards[0])
-		<< "        |    |"
-		<< display.suit(tableCards[1])
-		<< "        |    |"
-		<< display.suit(tableCards[2])
-		<< "        |    |"
-		<< display.suit(tableCards[3])
-		<< "        |    |"
-		<< display.suit(tableCards[4])
-		<< "        |   |" 
+		<< "|   |";
+	display.suit(tableCards[0]);
+	cout << "        |    |";
+	display.suit(tableCards[1]);
+	cout << "        |    |";
+	display.suit(tableCards[2]);
+	cout << "        |    |";
+	display.suit(tableCards[3]);
+	cout << "        |    |";
+	display.suit(tableCards[4]);
+	cout << "        |   |"
 		<< endl
-		<< "|   |         |    |         |    |         |    |         |    |         |   |" 
+		<< "|   |         |    |         |    |         |    |         |    |         |   |"
 		<< endl
-		<< "|   |    "
-		<< display.suit(tableCards[0])
-		<< "    |    |    "
-		<< display.suit(tableCards[1])
-		<< "    |    |    "
-		<< display.suit(tableCards[2])
-		<< "    |    |    "
-		<< display.suit(tableCards[3])
-		<< "    |    |    "
-		<< display.suit(tableCards[4])
-		<< "    |   |" 
+		<< "|   |    ";
+	display.suit(tableCards[0]);
+	cout << "    |    |    ";
+	display.suit(tableCards[1]);
+	cout << "    |    |    ";
+	display.suit(tableCards[2]);
+	cout << "    |    |    ";
+	display.suit(tableCards[3]);
+	cout << "    |    |    ";
+	display.suit(tableCards[4]);
+	cout << "    |   |"
 		<< endl
-		<< "|   |         |    |         |    |         |    |         |    |         |   |" 
+		<< "|   |         |    |         |    |         |    |         |    |         |   |"
 		<< endl
-		<< "|   |        "
-		<< display.suit(tableCards[0])
-		<< "|    |        "
-		<< display.suit(tableCards[0])
-		<< "|    |        "
-		<< display.suit(tableCards[0]) 
-		<< "|    |        "
-		<< display.suit(tableCards[0]) 
-		<< "|    |        "
-		<< display.suit(tableCards[0]) 
-		<< "|   |" 
+		<< "|   |        ";
+	display.suit(tableCards[0]);
+	cout << "|    |        ";
+	display.suit(tableCards[1]);
+	cout << "|    |        ";
+	display.suit(tableCards[2]);
+	cout << "|    |        ";
+	display.suit(tableCards[3]);
+	cout << "|    |        ";
+	display.suit(tableCards[4]);
+	cout << "|   |"
 		<< endl
-		<< "|   |_______"
-		<< display.symbol(1, tableCards[0])
-		<< "|    |_______"
-		<< display.symbol(1, tableCards[1])
-		<< "|    |_______"
-		<< display.symbol(1, tableCards[2])
-		<< "|    |_______"
-		<< display.symbol(1, tableCards[3])
-		<< "|    |_______"
-		<< display.symbol(1, tableCards[4])
-		<< "|   |" 
+		<< "|   |_______";
+	display.symbol(1, tableCards[0]);
+	cout << "|    |_______";
+	display.symbol(1, tableCards[1]);
+	cout << "|    |_______";
+	display.symbol(1, tableCards[2]);
+	cout << "|    |_______";
+	display.symbol(1, tableCards[3]);
+	cout << "|    |_______";
+	display.symbol(1, tableCards[4]);
+	cout << "|   |" 
 		<< endl
 		<< "|_____________________________________________________________________________|" 
 		<< endl;

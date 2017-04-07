@@ -1,101 +1,148 @@
 #include "Display.h"
 
-string Display::suit(CARD card)
+void Display::suit(CARD card)
 {
 	if (card.rank != 0)
 	{
 		if (card.suit == Spades)
 		{
-			return SPADE;
+			cout << SPADE;
 		}
 		else if (card.suit == Clubs)
 		{
-			return CLUB;
+			cout << CLUB;
 		}
 		else if (card.suit == Hearts)
 		{
-			return HEART;
+			cout << HEART;
 		}
 		else if (card.suit == Diamonds)
 		{
-			return DIAMOND;
-		}
-		else
-		{
-			return " ";
+			cout << DIAMOND;
 		}
 	}
 	else
 	{
-		return " ";
+		cout << " ";
 	}
 }
 
-string Display::symbol(int place, CARD card)
+void Display::symbol(int place, CARD card)
 {
 	if (place == 0)
 	{
 		if (card.rank == 0)
 		{
-			return "  ";
+			cout << "  ";
 		}
 		else if (card.rank == 10)
 		{
-			return "10";
+			cout << "10";
 		}
 		else if (card.rank == 11)
 		{
-			return "J ";
+			cout << "J ";
 		}
 		else if (card.rank == 12)
 		{
-			return "Q ";
+			cout << "Q ";
 		}
 		else if (card.rank == 13)
 		{
-			return "K ";
+			cout << "K ";
 		}
 		else if (card.rank == 14)
 		{
-			return "A ";
+			cout << "A ";
 		}
 		else
 		{
-			string toReturn = card.rank + " ";
-			return toReturn;
+			cout << card.rank << " ";
 		}
 	}
 	else if (place == 1)
 	{
 		if (card.rank == 0)
 		{
-			return "__";
+			cout << "__";
 		}
 		else if (card.rank == 10)
 		{
-			return "10";
+			cout << "10";
 		}
 		else if (card.rank == 11)
 		{
-			return "_J";
+			cout << "_J";
 		}
 		else if (card.rank == 12)
 		{
-			return "_Q";
+			cout << "_Q";
 		}
 		else if (card.rank == 13)
 		{
-			return "_K";
+			cout << "_K";
 		}
 		else if (card.rank == 14)
 		{
-			return "_A";
+			cout << "_A";
 		}
 		else
 		{
-			string toReturn = "_" + card.rank;
-			return toReturn;
+			cout << "_" << card.rank;
 		}
+	}
+}
+
+string Display::suitToFile(CARD card)
+{
+	if (card.suit == Spades)
+	{
+		return "\u2660";
+	}
+	else if (card.suit == Clubs)
+	{
+		return "\u2663";
+	}
+	else if (card.suit == Hearts)
+	{
+		return "\u2665";
+	}
+	else if (card.suit == Diamonds)
+	{
+		return "\u2666";
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+string Display::symbolToFile(CARD card)
+{
+	if (card.rank == 10)
+	{
+		return "10";
+	}
+	else if (card.rank == 11)
+	{
+		return "J";
+	}
+	else if (card.rank == 12)
+	{
+		return "Q";
+	}
+	else if (card.rank == 13)
+	{
+		return "K";
+	}
+	else if (card.rank == 14)
+	{
+		return "A";
+	}
+	else
+	{
+		string toReturn = "" + card.rank;
+		return toReturn;
 	}
 }
 
