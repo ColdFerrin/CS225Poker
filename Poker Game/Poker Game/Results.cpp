@@ -559,7 +559,7 @@ void Results::getWinner()                                                // To d
 		decideStrength(iterator);
 	}
 	int currentWinner = 0;
-	int currentlyChopped = 0;
+        currentlyChopped = 0;
 	for (int iterator = 1; iterator < numberOfPlayers; iterator++)
 	{
 		if (winningHand[currentWinner] > winningHand[iterator])
@@ -578,16 +578,37 @@ void Results::getWinner()                                                // To d
 					currentWinner = currentWinner;
 				else if (secondWinningCard[currentWinner] < secondWinningCard[iterator])
 					currentWinner = iterator;
-				else
+				else if (secondWinningCard[currentWinner] == secondWinningCard[iterator])
 				{
-					if (currentlyChopped == 0)
-					{
-						currentlyChopped = (int)pow(currentWinner, 2) + (int)pow(iterator, 2);
-					}
-					else if (currentlyChopped != 0)
-					{
-						currentlyChopped += (int)pow(iterator, 2);
+					if (thirdWinningCard[currentWinner] > thirdWinningCard[iterator])
+						currentWinner = currentWinner;
+					else if (thirdWinningCard[currentWinner] < thirdWinningCard[iterator])
 						currentWinner = iterator;
+					else if (thirdWinningCard[currentWinner] == thirdWinningCard[iterator])
+					{
+						if (fourthWinningCard[currentWinner] > fourthWinningCard[iterator])
+							currentWinner = currentWinner;
+						else if (fourthWinningCard[currentWinner] < fourthWinningCard[iterator])
+							currentWinner = iterator;
+						else if (fourthWinningCard{currentWinner} == fourthWinningCard[iterator])
+						{
+							if (fifthWinningCard[currentWinner] > fifthWinningCard[iterator])
+								currentWinner = currentWinner;
+							else if (fifthWinningCard[currentWinner] < fifthWinningCard[iterator])
+								currentWinner = iterator;
+							else (fifthWinningCard[currentWinner] == fifthWinningCard[iterator])
+							{
+								if (currentlyChopped == 0)
+								{
+									currentlyChopped = (int)pow(currentWinner, 2) + (int)pow(iterator, 2);
+								}
+								else if (currentlyChopped != 0)
+								{
+									currentlyChopped += (int)pow(iterator, 2);
+									currentWinner = iterator;
+								}
+							}
+\						}
 					}
 				}
 			}
@@ -640,3 +661,4 @@ ostream& operator<<(ostream& os, Results& current)
 	os << "The Winner is Player " << current.theWinner << endl << endl;
 	return os;
 }
+

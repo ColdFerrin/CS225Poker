@@ -29,6 +29,7 @@ private:
 	void decideStrength(int);
 	void printResultsToFile();
 	Display display;
+        int currentlyChopped ;
 public:
 	Results(int);
 	~Results();
