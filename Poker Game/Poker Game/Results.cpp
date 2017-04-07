@@ -590,13 +590,13 @@ void Results::getWinner()                                                // To d
 							currentWinner = currentWinner;
 						else if (fourthWinningCard[currentWinner] < fourthWinningCard[iterator])
 							currentWinner = iterator;
-						else if (fourthWinningCard{currentWinner} == fourthWinningCard[iterator])
+						else if (fourthWinningCard[currentWinner] == fourthWinningCard[iterator])
 						{
 							if (fifthWinningCard[currentWinner] > fifthWinningCard[iterator])
 								currentWinner = currentWinner;
 							else if (fifthWinningCard[currentWinner] < fifthWinningCard[iterator])
 								currentWinner = iterator;
-							else (fifthWinningCard[currentWinner] == fifthWinningCard[iterator])
+							else if (fifthWinningCard[currentWinner] == fifthWinningCard[iterator])
 							{
 								if (currentlyChopped == 0)
 								{
@@ -608,7 +608,7 @@ void Results::getWinner()                                                // To d
 									currentWinner = iterator;
 								}
 							}
-\						}
+						}
 					}
 				}
 			}
