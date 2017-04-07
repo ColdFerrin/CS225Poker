@@ -97,19 +97,19 @@ string Display::suitToFile(CARD card)
 {
 	if (card.suit == Spades)
 	{
-		return SPADE;
+		return "S";
 	}
 	else if (card.suit == Clubs)
 	{
-		return CLUB;
+		return "C";
 	}
 	else if (card.suit == Hearts)
 	{
-		return HEART;
+		return "H";
 	}
 	else if (card.suit == Diamonds)
 	{
-		return DIAMOND;
+		return "D";
 	}
 	else
 	{
@@ -141,7 +141,7 @@ string Display::symbolToFile(CARD card)
 	}
 	else
 	{
-		string toReturn = to_string(card.rank);
+		string toReturn = to_string((long long int)card.rank);
 		return toReturn;
 	}
 }

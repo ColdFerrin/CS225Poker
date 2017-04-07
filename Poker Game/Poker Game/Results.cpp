@@ -540,7 +540,7 @@ void Results::printResultsToFile()
 	fptr << "The hands were | ";
 	for (int iterator = 0; iterator < numberOfPlayers; iterator++)
 	{
-		for (int currentCard = 0; currentCard < 1; currentCard++)
+		for (int currentCard = 0; currentCard < 2; currentCard++)
 		{
 			fptr << display.symbolToFile(hands[iterator][currentCard]) << display.suitToFile(hands[iterator][currentCard]) << " ";
 		}
