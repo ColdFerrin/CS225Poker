@@ -1,5 +1,5 @@
-OBJS = PokerGame.o Table.o Dealer.o HumanPlayer.o Player.o Deck.o Results.o
-CC= g++
+OBJS = PokerGame.o Table.o Dealer.o HumanPlayer.o Player.o Deck.o Results.o Display.o
+CC= g++ -std=c++0x
 CFLAGS = -c
 LFLAGS = -Wall
 
@@ -27,5 +27,8 @@ Deck.o: Deck.cpp Deck.h
 Results.o: Results.cpp Results.h
 		$(CC) $(CFLAGS) Results.cpp
 
+Display.o: Display.cpp Display.h
+		$(CC) $(CFLAGS) Display.cpp
+
 clean:
-		rm -i *.o PokerGame
+		rm -i *.o PokerGame *.txt
