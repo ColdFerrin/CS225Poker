@@ -17,6 +17,9 @@ private:
 	int* winningHand;
 	int* winningCard;
 	int* secondWinningCard;
+	int* thirdWinningCard;
+	int* fourthWinningCard;
+	int* fifthWinningCard;
 	bool* hasNotFolded;
 	int numberOfPlayers;
 	CARD tableCards[5];
