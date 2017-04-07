@@ -7,7 +7,9 @@ using namespace std;
 
 #include<cmath>
 #include<iostream>
+#include<fstream>
 #include "Card.h"
+#include "Display.h"
 
 class Results
 {
@@ -25,6 +27,8 @@ private:
 	CARD tableCards[5];
 	CARD hands[9][2];
 	void decideStrength(int);
+	void printResultsToFile();
+	Display display;
 public:
 	Results(int);
 	~Results();

@@ -4,12 +4,12 @@
 #define HUMANPLAYER_H
 
 #include "Player.h"
+#include "Display.h"
 
 class HumanPlayer : public Player
 {
 private:
-	void displaySuit(int);
-	void displaySymbol(int, int);
+	Display display;
 public:
 	void displayHand();
 	int makeDecision();
