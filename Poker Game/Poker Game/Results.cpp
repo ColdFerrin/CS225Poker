@@ -63,11 +63,9 @@ void Results::decideStrength(int tablePosition)
 					isFlush = 1;
 					winningCard[tablePosition] = cardStack[flushMoving].rank;
 					secondWinningCard[tablePosition] = cardStack[flushMoving - 1].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[flushMoving - 2].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[flushMoving - 3].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[flushMoving - 4].rank;
-
-
+                    thirdWinningCard[tablePosition] = cardStack[flushMoving - 2].rank;
+                    fourthWinningCard[tablePosition] = cardStack[flushMoving - 3].rank;
+                    fifthWinningCard[tablePosition] = cardStack[flushMoving - 4].rank;
 				}
 			}
 		}
@@ -100,8 +98,6 @@ void Results::decideStrength(int tablePosition)
 					thirdWinningCard[tablePosition] = cardStack[iterator - 2].rank;
 					fourthWinningCard[tablePosition] = cardStack[iterator - 3].rank;
 					fifthWinningCard[tablePosition] = cardStack[iterator - 4].rank;
-
-
 				}
 			}
 		}
@@ -146,25 +142,25 @@ void Results::decideStrength(int tablePosition)
 			}
 			else if(winningCard[tablePosition] == cardStack[1].rank)                     //Quads where second Position is the start of the Quads
 			{
-			        secondWinningCard[tablePosition] = cardStack[1].rank;
-                                thirdWinningCard[tablePosition] = cardStack[1].rank; 
-                                fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                fifthWinningCard[tablePosition] = cardStack[0].rank; 
+				secondWinningCard[tablePosition] = cardStack[1].rank;
+                thirdWinningCard[tablePosition] = cardStack[1].rank; 
+                fourthWinningCard[tablePosition] = cardStack[1].rank;
+                fifthWinningCard[tablePosition] = cardStack[0].rank; 
 			}
 			else if(winningCard[tablePosition] == cardStack[2].rank)                     //Quads where first Position is the start of the Quads
 			{
-                                secondWinningCard[tablePosition] = cardStack[2].rank;
-                                thirdWinningCard[tablePosition] = cardStack[2].rank; 
-                                fourthWinningCard[tablePosition] = cardStack[2].rank;
-                                fifthWinningCard[tablePosition] = cardStack[0].rank; 
+				secondWinningCard[tablePosition] = cardStack[2].rank;
+				thirdWinningCard[tablePosition] = cardStack[2].rank; 
+				fourthWinningCard[tablePosition] = cardStack[2].rank;
+                fifthWinningCard[tablePosition] = cardStack[0].rank; 
 			}
-                        else if(winningCard[tablePosition] == cardStack[3].rank)                     //Quads where first Position is the start of the Quads             
-                        {
-                                secondWinningCard[tablePosition] = cardStack[3].rank;
-                                thirdWinningCard[tablePosition] = cardStack[3].rank;
-                                fourthWinningCard[tablePosition] = cardStack[3].rank;
-                                fifthWinningCard[tablePosition] = cardStack[0].rank;
-                        }
+			else if(winningCard[tablePosition] == cardStack[3].rank)                     //Quads where first Position is the start of the Quads             
+			{
+				secondWinningCard[tablePosition] = cardStack[3].rank;
+				thirdWinningCard[tablePosition] = cardStack[3].rank;
+				fourthWinningCard[tablePosition] = cardStack[3].rank;
+				fifthWinningCard[tablePosition] = cardStack[0].rank;
+			}
 		}
 		else if (winDecider == 6)                                                       //Full House
 		{
@@ -173,101 +169,101 @@ void Results::decideStrength(int tablePosition)
 			{
 				if(secondWinningCard[tablePosition] == cardStack[3].rank)            //Fourth & Fifth card pair
 				{
-                                	secondWinningCard[tablePosition] = cardStack[0].rank;
-                                	thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                	fourthWinningCard[tablePosition] = cardStack[3].rank;
-                                	fifthWinningCard[tablePosition] = cardStack[3].rank;
+					secondWinningCard[tablePosition] = cardStack[0].rank;
+					thirdWinningCard[tablePosition] = cardStack[0].rank;
+					fourthWinningCard[tablePosition] = cardStack[3].rank;
+					fifthWinningCard[tablePosition] = cardStack[3].rank;
 				}
 				else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)      //Fifth & Sixth Card pair
 				{
-	                                secondWinningCard[tablePosition] = cardStack[0].rank;
-        	                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                	fourthWinningCard[tablePosition] = cardStack[4].rank;
-                                	fifthWinningCard[tablePosition] = cardStack[4].rank;
+					secondWinningCard[tablePosition] = cardStack[0].rank;
+					thirdWinningCard[tablePosition] = cardStack[0].rank;
+					fourthWinningCard[tablePosition] = cardStack[4].rank;
+					fifthWinningCard[tablePosition] = cardStack[4].rank;
 				}
 				else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair
 				{
-        	                        secondWinningCard[tablePosition] = cardStack[0].rank;
-	                                thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[5].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[5].rank;
+					secondWinningCard[tablePosition] = cardStack[0].rank;
+					thirdWinningCard[tablePosition] = cardStack[0].rank;
+					fourthWinningCard[tablePosition] = cardStack[5].rank;
+					fifthWinningCard[tablePosition] = cardStack[5].rank;
 				}
 			}			                                   
 			else if(winningCard[tablePosition] == cardStack[1].rank)                     //Second Card Trips                             
-                        {        
-                                if(secondWinningCard[tablePosition] ==  cardStack[4].rank)          //Fifth & Sixth Card Pair                         
-                                {
-        	                        secondWinningCard[tablePosition] = cardStack[1].rank;
-	                                thirdWinningCard[tablePosition] = cardStack[1].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[4].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[4].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair                              
-                                {
-	                                secondWinningCard[tablePosition] = cardStack[1].rank;
-        	                        thirdWinningCard[tablePosition] = cardStack[1].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[5].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[5].rank;
-                                }
-                        }
+			{        
+				if(secondWinningCard[tablePosition] ==  cardStack[4].rank)          //Fifth & Sixth Card Pair                         
+				{
+					secondWinningCard[tablePosition] = cardStack[1].rank;
+					thirdWinningCard[tablePosition] = cardStack[1].rank;
+					fourthWinningCard[tablePosition] = cardStack[4].rank;
+					fifthWinningCard[tablePosition] = cardStack[4].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair                              
+				{
+					secondWinningCard[tablePosition] = cardStack[1].rank;
+					thirdWinningCard[tablePosition] = cardStack[1].rank;
+					fourthWinningCard[tablePosition] = cardStack[5].rank;
+					fifthWinningCard[tablePosition] = cardStack[5].rank;
+				}
+			}
 			else if(winningCard[tablePosition] == cardStack[2].rank)                     //Third Card Trips
 			{       
-                                if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair                                                   
-                                {
-                  	        	secondWinningCard[tablePosition] = cardStack[2].rank;
-                        	        thirdWinningCard[tablePosition] = cardStack[2].rank;   
-                                        fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair                              
-                                {
-                           	        secondWinningCard[tablePosition] = cardStack[2].rank;
-                          	        thirdWinningCard[tablePosition] = cardStack[2].rank;  
-                                        fourthWinningCard[tablePosition] = cardStack[5].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[5].rank;
-                                }
-                        }
+				if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair                                                   
+				{
+					secondWinningCard[tablePosition] = cardStack[2].rank;
+					thirdWinningCard[tablePosition] = cardStack[2].rank;   
+					fourthWinningCard[tablePosition] = cardStack[0].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair                              
+				{
+					secondWinningCard[tablePosition] = cardStack[2].rank;
+					thirdWinningCard[tablePosition] = cardStack[2].rank;  
+					fourthWinningCard[tablePosition] = cardStack[5].rank;
+					fifthWinningCard[tablePosition] = cardStack[5].rank;
+				}
+			}
 			else if(winningCard[tablePosition] == cardStack[3].rank)                     //Fourth Card Trips
-                        {
-                                if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second card Pair                                              
-                                {
-	                                secondWinningCard[tablePosition] = cardStack[3].rank;
-        	                        thirdWinningCard[tablePosition] = cardStack[3].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third card Pair
-                                {
-	                                secondWinningCard[tablePosition] = cardStack[3].rank;
-        	                        thirdWinningCard[tablePosition] = cardStack[3].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[1].rank;
-                                }
-                        }
-                        else if(winningCard[tablePosition] == cardStack[4].rank)                     //Fifth Card Trips
-                        {
-                                if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair
-                                {
-	                                secondWinningCard[tablePosition] = cardStack[4].rank;
-        	                        thirdWinningCard[tablePosition] = cardStack[4].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third Card Pair
-                                {
-	                                secondWinningCard[tablePosition] = cardStack[4].rank;
-        	                        thirdWinningCard[tablePosition] = cardStack[4].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[1].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[2].rank)     //Third & Fourth Card Pair
-                                {
-	                                secondWinningCard[tablePosition] = cardStack[4].rank;
-        	                        thirdWinningCard[tablePosition] = cardStack[4].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[2].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
-                        }      
+			{
+				if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second card Pair                                              
+				{
+					secondWinningCard[tablePosition] = cardStack[3].rank;
+					thirdWinningCard[tablePosition] = cardStack[3].rank;
+					fourthWinningCard[tablePosition] = cardStack[0].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[3].rank;
+					thirdWinningCard[tablePosition] = cardStack[3].rank;
+					fourthWinningCard[tablePosition] = cardStack[1].rank;
+					fifthWinningCard[tablePosition] = cardStack[1].rank;
+				}
+			}
+			else if(winningCard[tablePosition] == cardStack[4].rank)                     //Fifth Card Trips
+			{
+				if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[4].rank;
+					thirdWinningCard[tablePosition] = cardStack[4].rank;
+					fourthWinningCard[tablePosition] = cardStack[0].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[4].rank;
+					thirdWinningCard[tablePosition] = cardStack[4].rank;
+					fourthWinningCard[tablePosition] = cardStack[1].rank;
+					fifthWinningCard[tablePosition] = cardStack[1].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[2].rank)     //Third & Fourth Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[4].rank;
+					thirdWinningCard[tablePosition] = cardStack[4].rank;
+					fourthWinningCard[tablePosition] = cardStack[2].rank;
+					fifthWinningCard[tablePosition] = cardStack[2].rank;
+				}
+			}      
 		}
 		else if (isFlush == 1)
 			winningHand[tablePosition] = 5;
@@ -277,250 +273,249 @@ void Results::decideStrength(int tablePosition)
 		{
 			winningHand[tablePosition] = 3;
 			if(winningCard[tablePosition] == cardStack[0].rank)                          //First Card Trips
-                        {
-                                secondWinningCard[tablePosition] = cardStack[0].rank;
-                                thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                fourthWinningCard[tablePosition] = cardStack[3].rank;
+			{
+				secondWinningCard[tablePosition] = cardStack[0].rank;
+				thirdWinningCard[tablePosition] = cardStack[0].rank;
+				fourthWinningCard[tablePosition] = cardStack[3].rank;
 				fifthWinningCard[tablePosition] = cardStack[4].rank;
 			}
 			else if(winningCard[tablePosition] ==  cardStack[1].rank)      		     //Second Card Trips
-                        {
-                        	secondWinningCard[tablePosition] = cardStack[1].rank;
-                                thirdWinningCard[tablePosition] = cardStack[1].rank;
-                                fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                fifthWinningCard[tablePosition] = cardStack[4].rank;
-                        }
-                        else if(secondWinningCard[tablePosition] ==  cardStack[2].rank)              //Third Card Trips
-                        {
-                        	secondWinningCard[tablePosition] = cardStack[2].rank;
-                                thirdWinningCard[tablePosition] = cardStack[2].rank;
-                                fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                fifthWinningCard[tablePosition] = cardStack[1].rank;
-                        }
-                        else if(winningCard[tablePosition] == cardStack[3].rank)                     //Fourth Card Trips
-                        {
-                        	secondWinningCard[tablePosition] = cardStack[3].rank;
-                        	thirdWinningCard[tablePosition] = cardStack[3].rank;
-                                fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                fifthWinningCard[tablePosition] = cardStack[1].rank;
-                        }
-                        else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)              //Fifth Cart Trips
-                        {
-                        	secondWinningCard[tablePosition] = cardStack[4].rank;
-                                thirdWinningCard[tablePosition] = cardStack[4].rank;
-                                fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                fifthWinningCard[tablePosition] = cardStack[1].rank;
-                        }
+			{
+				secondWinningCard[tablePosition] = cardStack[1].rank;
+				thirdWinningCard[tablePosition] = cardStack[1].rank;
+				fourthWinningCard[tablePosition] = cardStack[0].rank;
+				fifthWinningCard[tablePosition] = cardStack[4].rank;
+			}
+			else if(secondWinningCard[tablePosition] ==  cardStack[2].rank)              //Third Card Trips
+			{
+				secondWinningCard[tablePosition] = cardStack[2].rank;
+				thirdWinningCard[tablePosition] = cardStack[2].rank;
+				fourthWinningCard[tablePosition] = cardStack[0].rank;
+				fifthWinningCard[tablePosition] = cardStack[1].rank;
+			}
+			else if(winningCard[tablePosition] == cardStack[3].rank)                     //Fourth Card Trips
+			{
+				secondWinningCard[tablePosition] = cardStack[3].rank;
+				thirdWinningCard[tablePosition] = cardStack[3].rank;
+				fourthWinningCard[tablePosition] = cardStack[0].rank;
+				fifthWinningCard[tablePosition] = cardStack[1].rank;
+			}
+			else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)              //Fifth Cart Trips
+			{
+				secondWinningCard[tablePosition] = cardStack[4].rank;
+				thirdWinningCard[tablePosition] = cardStack[4].rank;
+				fourthWinningCard[tablePosition] = cardStack[0].rank;
+				fifthWinningCard[tablePosition] = cardStack[1].rank;
+			}
 		}
 		else if (winDecider == 2)
 		{
 			winningHand[tablePosition] = 2;
-                        if(winningCard[tablePosition] == cardStack[0].rank)                          //First card Pair
-                        {
-                                if(secondWinningCard[tablePosition] == cardStack[2].rank)            //Third & Fourth card pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[0].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[2].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[2].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[4].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[3].rank)      //Fourth & Fifth Card pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[0].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[3].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[3].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)     //Fifth & Sixth Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[0].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[4].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[4].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[0].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[5].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[5].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
-
-                        }
-                        else if(winningCard[tablePosition] == cardStack[1].rank)                    //Second Card Pair
-                        {
-                                if(secondWinningCard[tablePosition] ==  cardStack[3].rank)          //Fourth & Fifth Card Pair 
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[1].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[3].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[3].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)     //Sixth & Seventh Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[1].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[4].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[4].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                        }
-                        else if(winningCard[tablePosition] == cardStack[2].rank)                    //Third Card Pair  
-                        {
-                                if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[2].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[4].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)     //Fifth & Sixth Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[2].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[4].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[4].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair  
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[2].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[5].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[5].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-    			}
-                        else if(winningCard[tablePosition] == cardStack[3].rank)                    //Fourth Card Pair   
-                        {
-                                if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[3].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third Card Pair  
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[3].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[1].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair                  
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[3].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[5].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[5].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                        }
-                        else if(winningCard[tablePosition] == cardStack[4].rank)                    //Fifth Card Pair        
-                        {        
-                                if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[4].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[3].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[1].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[2].rank)     //Third & Fourth Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[3].rank;                
-                                        thirdWinningCard[tablePosition] = cardStack[2].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[2].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                        }
-                        else if(winningCard[tablePosition] == cardStack[5].rank)                    //Sixth Card Pair        
-                        {        
-                                if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[5].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[0].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[5].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[1].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[2].rank)     //Third & Fourth Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[5].rank;                
-                                        thirdWinningCard[tablePosition] = cardStack[2].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[2].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[3].rank)     //Fourth & Fifth Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[5].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[3].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[3].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[0].rank;
-                                }
-                        }
+			if(winningCard[tablePosition] == cardStack[0].rank)                          //First card Pair
+			{
+				if(secondWinningCard[tablePosition] == cardStack[2].rank)            //Third & Fourth card pair
+				{
+					secondWinningCard[tablePosition] = cardStack[0].rank;
+					thirdWinningCard[tablePosition] = cardStack[2].rank;
+					fourthWinningCard[tablePosition] = cardStack[2].rank;
+					fifthWinningCard[tablePosition] = cardStack[4].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[3].rank)      //Fourth & Fifth Card pair
+				{
+					secondWinningCard[tablePosition] = cardStack[0].rank;
+					thirdWinningCard[tablePosition] = cardStack[3].rank;
+					fourthWinningCard[tablePosition] = cardStack[3].rank;
+					fifthWinningCard[tablePosition] = cardStack[2].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)     //Fifth & Sixth Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[0].rank;
+					thirdWinningCard[tablePosition] = cardStack[4].rank;
+					fourthWinningCard[tablePosition] = cardStack[4].rank;
+					fifthWinningCard[tablePosition] = cardStack[2].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[0].rank;
+					thirdWinningCard[tablePosition] = cardStack[5].rank;
+					fourthWinningCard[tablePosition] = cardStack[5].rank;
+					fifthWinningCard[tablePosition] = cardStack[2].rank;
+				}
+			}
+			else if(winningCard[tablePosition] == cardStack[1].rank)                    //Second Card Pair
+			{
+				if(secondWinningCard[tablePosition] ==  cardStack[3].rank)          //Fourth & Fifth Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[1].rank;
+					thirdWinningCard[tablePosition] = cardStack[3].rank;
+					fourthWinningCard[tablePosition] = cardStack[3].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)     //Sixth & Seventh Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[1].rank;
+					thirdWinningCard[tablePosition] = cardStack[4].rank;
+					fourthWinningCard[tablePosition] = cardStack[4].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+			}
+			else if(winningCard[tablePosition] == cardStack[2].rank)                    //Third Card Pair
+			{
+				if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[2].rank;
+					thirdWinningCard[tablePosition] = cardStack[0].rank;
+					fourthWinningCard[tablePosition] = cardStack[0].rank;
+					fifthWinningCard[tablePosition] = cardStack[4].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)     //Fifth & Sixth Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[2].rank;
+					thirdWinningCard[tablePosition] = cardStack[4].rank;
+					fourthWinningCard[tablePosition] = cardStack[4].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair  
+				{
+					secondWinningCard[tablePosition] = cardStack[2].rank;
+					thirdWinningCard[tablePosition] = cardStack[5].rank;
+					fourthWinningCard[tablePosition] = cardStack[5].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+			}
+			else if(winningCard[tablePosition] == cardStack[3].rank)                    //Fourth Card Pair   
+			{
+				if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[3].rank;
+					thirdWinningCard[tablePosition] = cardStack[0].rank;
+					fourthWinningCard[tablePosition] = cardStack[0].rank;
+					fifthWinningCard[tablePosition] = cardStack[2].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third Card Pair  
+				{
+					secondWinningCard[tablePosition] = cardStack[3].rank;
+					thirdWinningCard[tablePosition] = cardStack[1].rank;
+					fourthWinningCard[tablePosition] = cardStack[1].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[3].rank;
+					thirdWinningCard[tablePosition] = cardStack[5].rank;
+					fourthWinningCard[tablePosition] = cardStack[5].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+			}
+			else if (winningCard[tablePosition] == cardStack[4].rank)                    //Fifth Card Pair
+			{
+				if (secondWinningCard[tablePosition] == cardStack[0].rank)          //First & Second Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[4].rank;
+					thirdWinningCard[tablePosition] = cardStack[0].rank;
+					fourthWinningCard[tablePosition] = cardStack[0].rank;
+					fifthWinningCard[tablePosition] = cardStack[2].rank;
+				}
+				else if (secondWinningCard[tablePosition] == cardStack[1].rank)     //Second & Third Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[3].rank;
+					thirdWinningCard[tablePosition] = cardStack[1].rank;
+					fourthWinningCard[tablePosition] = cardStack[1].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+				else if (secondWinningCard[tablePosition] == cardStack[2].rank)     //Third & Fourth Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[3].rank;
+					thirdWinningCard[tablePosition] = cardStack[2].rank;
+					fourthWinningCard[tablePosition] = cardStack[2].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+			}
+			else if(winningCard[tablePosition] == cardStack[5].rank)                    //Sixth Card Pair        
+			{
+				if(secondWinningCard[tablePosition] ==  cardStack[0].rank)          //First & Second Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[5].rank;
+					thirdWinningCard[tablePosition] = cardStack[0].rank;
+					fourthWinningCard[tablePosition] = cardStack[0].rank;
+					fifthWinningCard[tablePosition] = cardStack[2].rank;
+				}
+				else if (secondWinningCard[tablePosition] == cardStack[1].rank)     //Second & Third Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[5].rank;
+					thirdWinningCard[tablePosition] = cardStack[1].rank;
+					fourthWinningCard[tablePosition] = cardStack[1].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+				else if (secondWinningCard[tablePosition] == cardStack[2].rank)     //Third & Fourth Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[5].rank;
+					thirdWinningCard[tablePosition] = cardStack[2].rank;
+					fourthWinningCard[tablePosition] = cardStack[2].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+				else if(secondWinningCard[tablePosition] ==  cardStack[3].rank)     //Fourth & Fifth Card Pair
+				{
+					secondWinningCard[tablePosition] = cardStack[5].rank;
+					thirdWinningCard[tablePosition] = cardStack[3].rank;
+					fourthWinningCard[tablePosition] = cardStack[3].rank;
+					fifthWinningCard[tablePosition] = cardStack[0].rank;
+				}
+			}
 		}
 		else if (winDecider == 1)
 		{
-				winningHand[tablePosition] = 1;
-                                if(winningCard[tablePosition] == cardStack[0].rank)		    //First & Second Card Pair
-				{
-                                        secondWinningCard[tablePosition] = cardStack[0].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[2].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[3].rank; 
-                                        fifthWinningCard[tablePosition] = cardStack[4].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[1].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[3].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[4].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[2].rank)     //Third & Fourth Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[2].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[4].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[3].rank)     //Fourth & Fifth Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[3].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)     //Fifth & Sixth Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[4].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
-                                else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair
-                                {
-                                        secondWinningCard[tablePosition] = cardStack[5].rank;
-                                        thirdWinningCard[tablePosition] = cardStack[0].rank;
-                                        fourthWinningCard[tablePosition] = cardStack[1].rank;
-                                        fifthWinningCard[tablePosition] = cardStack[2].rank;
-                                }
+			winningHand[tablePosition] = 1;
+			if(winningCard[tablePosition] == cardStack[0].rank)		    //First & Second Card Pair
+			{
+				secondWinningCard[tablePosition] = cardStack[0].rank;
+				thirdWinningCard[tablePosition] = cardStack[2].rank;
+				fourthWinningCard[tablePosition] = cardStack[3].rank;
+				fifthWinningCard[tablePosition] = cardStack[4].rank;
+			}
+			else if(secondWinningCard[tablePosition] ==  cardStack[1].rank)     //Second & Third Card Pair
+			{
+				secondWinningCard[tablePosition] = cardStack[1].rank;
+				thirdWinningCard[tablePosition] = cardStack[0].rank;
+				fourthWinningCard[tablePosition] = cardStack[3].rank;
+				fifthWinningCard[tablePosition] = cardStack[4].rank;
+			}
+			else if(secondWinningCard[tablePosition] ==  cardStack[2].rank)     //Third & Fourth Card Pair
+			{
+				secondWinningCard[tablePosition] = cardStack[2].rank;
+				thirdWinningCard[tablePosition] = cardStack[0].rank;
+				fourthWinningCard[tablePosition] = cardStack[1].rank;
+				fifthWinningCard[tablePosition] = cardStack[4].rank;
+			}
+			else if(secondWinningCard[tablePosition] ==  cardStack[3].rank)     //Fourth & Fifth Card Pair
+			{
+				secondWinningCard[tablePosition] = cardStack[3].rank;
+				thirdWinningCard[tablePosition] = cardStack[0].rank;
+				fourthWinningCard[tablePosition] = cardStack[1].rank;
+				fifthWinningCard[tablePosition] = cardStack[2].rank;
+			}
+			else if(secondWinningCard[tablePosition] ==  cardStack[4].rank)     //Fifth & Sixth Card Pair
+			{
+				secondWinningCard[tablePosition] = cardStack[4].rank;
+				thirdWinningCard[tablePosition] = cardStack[0].rank;
+				fourthWinningCard[tablePosition] = cardStack[1].rank;
+				fifthWinningCard[tablePosition] = cardStack[2].rank;
+			}
+			else if(secondWinningCard[tablePosition] ==  cardStack[5].rank)     //Sixth & Seventh Card Pair
+			{
+				secondWinningCard[tablePosition] = cardStack[5].rank;
+				thirdWinningCard[tablePosition] = cardStack[0].rank;
+				fourthWinningCard[tablePosition] = cardStack[1].rank;
+				fifthWinningCard[tablePosition] = cardStack[2].rank;
+			}
 		}
 		else                                                   //To return high card if needed
 		{
 			winningCard[tablePosition] = cardStack[0].rank;
 			secondWinningCard[tablePosition] = cardStack[1].rank;
-                        thirdWinningCard[tablePosition] = cardStack[2].rank; 
-                        fourthWinningCard[tablePosition] = cardStack[3].rank;
-                        fifthWinningCard[tablePosition] = cardStack[4].rank;
+			thirdWinningCard[tablePosition] = cardStack[2].rank;
+			fourthWinningCard[tablePosition] = cardStack[3].rank;
+			fifthWinningCard[tablePosition] = cardStack[4].rank;
 			winningHand[tablePosition] = 0;
 		}
 	}
@@ -661,4 +656,3 @@ ostream& operator<<(ostream& os, Results& current)
 	os << "The Winner is Player " << current.theWinner << endl << endl;
 	return os;
 }
-
