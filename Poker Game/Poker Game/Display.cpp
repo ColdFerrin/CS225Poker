@@ -34,7 +34,7 @@ void Display::suit(CARD card)
 }
 
 void Display::symbol(int place, CARD card)
-{
+{ 
 	if (place == 0)
 	{
 		if (card.rank == 0)
